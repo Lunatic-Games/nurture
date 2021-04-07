@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/para_beat_01.wav-22af89bc85cdc66776d28546d54f467f.sample"
+
+[deps]
+
+source_file="res://Music/para_beat_01.wav"
+dest_files=[ "res://.import/para_beat_01.wav-22af89bc85cdc66776d28546d54f467f.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0

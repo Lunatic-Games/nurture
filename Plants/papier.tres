@@ -1,0 +1,27 @@
+[gd_resource type="Resource" load_steps=4 format=2]
+
+[ext_resource path="res://Plants/PLANT.gd" type="Script" id=1]
+[ext_resource path="res://Plants/papier_grown.png" type="Texture" id=2]
+[ext_resource path="res://Plants/papier_seed.png" type="Texture" id=3]
+
+[resource]
+script = ExtResource( 1 )
+plant_name = "Papier"
+plant_sprite = ExtResource( 2 )
+seed_sprite = ExtResource( 3 )
+other_drops = [  ]
+rare_drops = [  ]
+others_drop_chance = 0.0
+max_others_dropped = 0
+drops_seed = true
+max_own_seeds_dropped = 1
+min_own_seeds_dropped = 1
+seed_drop_chance = 0.0
+growing_time = 4
+clicks_to_harvest = 1
+downtime = 3.0
+score = 290.0
+nurture_threshold = 10
+nurture_multiplier = 5.0
+rare_seeds_dropped_if_nurtured = 0
+rare_seed_drop_chance = 0.0
