@@ -7,13 +7,13 @@
 [ext_resource path="res://Music/para_beat_01.wav" type="AudioStream" id=5]
 [ext_resource path="res://TestScene/Level.gd" type="Script" id=6]
 [ext_resource path="res://Plants/ice_melon_grown.png" type="Texture" id=7]
-[ext_resource path="res://Plants/cablit_grown.png" type="Texture" id=8]
+[ext_resource path="res://Plants/grunth_grown.png" type="Texture" id=8]
 [ext_resource path="res://TestScene/Level3.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Plants/cablit.tres" type="Resource" id=10]
 
 [node name="Level2" type="Node2D"]
 script = ExtResource( 6 )
-level_goals = [ [ ExtResource( 8 ), 4 ], [ ExtResource( 7 ), 3 ] ]
+level_goals = [ [ ExtResource( 8 ), 2 ], [ ExtResource( 7 ), 3 ] ]
 next_level = ExtResource( 9 )
 starting_seeds = [ ExtResource( 10 ), ExtResource( 10 ), ExtResource( 10 ) ]
 

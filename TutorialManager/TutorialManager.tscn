@@ -1,0 +1,163 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Yagitudeh.otf" type="DynamicFontData" id=1]
+[ext_resource path="res://TutorialManager/TutorialManager.gd" type="Script" id=2]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.25098, 0.0470588, 0.223529, 0.290196 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 24
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.25098, 0.0470588, 0.223529, 0.290196 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.25098, 0.0470588, 0.223529, 0.290196 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.25098, 0.0470588, 0.223529, 0.290196 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.25098, 0.0470588, 0.223529, 0.290196 )
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.25098, 0.0470588, 0.223529, 0.290196 )
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0.25098, 0.0470588, 0.223529, 0.290196 )
+
+[node name="TutorialManager" type="Control"]
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tut_1" type="RichTextLabel" parent="."]
+margin_left = 339.0
+margin_top = 21.0
+margin_right = 660.0
+margin_bottom = 75.0
+custom_styles/normal = SubResource( 1 )
+custom_fonts/normal_font = SubResource( 2 )
+bbcode_enabled = true
+bbcode_text = "[center]Drag the seed into the square plot on the ground![/center]"
+text = "Drag the seed into the square plot on the ground!"
+fit_content_height = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tut_2" type="RichTextLabel" parent="."]
+visible = false
+margin_left = 339.0
+margin_top = 21.0
+margin_right = 660.0
+margin_bottom = 75.0
+custom_styles/normal = SubResource( 3 )
+custom_fonts/normal_font = SubResource( 2 )
+bbcode_enabled = true
+bbcode_text = "[center]Nurture your seed by clicking on it when it wants water[/center]"
+text = "Nurture your seed by clicking on it when it wants water"
+fit_content_height = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tut_3" type="RichTextLabel" parent="."]
+visible = false
+margin_left = 339.0
+margin_top = 21.0
+margin_right = 660.0
+margin_bottom = 75.0
+custom_styles/normal = SubResource( 4 )
+custom_fonts/normal_font = SubResource( 2 )
+bbcode_enabled = true
+bbcode_text = "[center]Fully nurturing a plant gives it a chance to drop [rainbow]rare seeds[/rainbow][/center]"
+text = "Fully nurturing a plant gives it a chance to drop rare seeds"
+fit_content_height = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tut_4" type="RichTextLabel" parent="."]
+visible = false
+margin_left = 339.0
+margin_top = 21.0
+margin_right = 660.0
+margin_bottom = 75.0
+custom_styles/normal = SubResource( 5 )
+custom_fonts/normal_font = SubResource( 2 )
+bbcode_enabled = true
+bbcode_text = "[center]You can harvest grown plants by continuing to nurture them. Harvest the cablit[/center]"
+text = "You can harvest grown plants by continuing to nurture them. Harvest the cablit"
+fit_content_height = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tut_5" type="RichTextLabel" parent="."]
+visible = false
+margin_left = 339.0
+margin_top = 21.0
+margin_right = 660.0
+margin_bottom = 75.0
+custom_styles/normal = SubResource( 6 )
+custom_fonts/normal_font = SubResource( 2 )
+bbcode_enabled = true
+bbcode_text = "[center]You can click on the flag button to view your goals for the level![/center]"
+text = "You can click on the flag button to view your goals for the level!"
+fit_content_height = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tut_6" type="RichTextLabel" parent="."]
+visible = false
+margin_left = 660.696
+margin_top = 31.6787
+margin_right = 981.696
+margin_bottom = 112.679
+custom_styles/normal = SubResource( 7 )
+custom_fonts/normal_font = SubResource( 2 )
+bbcode_enabled = true
+bbcode_text = "[center]This goal says to grow three cablits, grow the final two![/center]"
+text = "This goal says to grow three cablits, grow the final two!"
+fit_content_height = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tut_7" type="RichTextLabel" parent="."]
+visible = false
+margin_left = 660.696
+margin_top = 31.6787
+margin_right = 981.696
+margin_bottom = 112.679
+custom_styles/normal = SubResource( 8 )
+custom_fonts/normal_font = SubResource( 2 )
+bbcode_enabled = true
+bbcode_text = "[center][wave]You beat the level![/wave]
+For my final knowledge, you can move the camera using W A S D[/center]"
+text = "You beat the level!
+For my final knowledge, you can move the camera using W A S D"
+fit_content_height = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Alt_1" type="RichTextLabel" parent="."]
+visible = false
+margin_left = 339.0
+margin_top = 21.0
+margin_right = 660.0
+margin_bottom = 75.0
+custom_fonts/normal_font = SubResource( 2 )
+bbcode_enabled = true
+bbcode_text = "[center]You didn't nurture the plant, try again. Make sure to click on it when you see water drops![/center]"
+text = "You didn't nurture the plant, try again. Make sure to click on it when you see water drops!"
+fit_content_height = true
+__meta__ = {
+"_edit_use_anchors_": false
+}

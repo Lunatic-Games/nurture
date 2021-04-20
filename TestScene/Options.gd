@@ -5,6 +5,7 @@ onready var pressed_audio = get_node("Pressed")
 onready var music_slider = get_node("VBoxContainer/MusicSlider")
 onready var sound_slider = get_node("VBoxContainer/SoundsSlider")
 onready var fullscreen_check = get_node("VBoxContainer/Fullscreen")
+onready var menu_slide_animator = get_node("Panel/MenuSlideIn")
 
 func _ready():
 	# Set the sliders to the correct position
@@ -18,6 +19,8 @@ func _ready():
 	
 	# Set fullscreen to the correct state
 	fullscreen_check.pressed = OS.window_fullscreen
+	
+	menu_slide_animator.play("SlideFromRight")
 
 func _on_MusicSlider_value_changed(value):
 	var db = linear2db(value/SLIDER_MAX_VAL)

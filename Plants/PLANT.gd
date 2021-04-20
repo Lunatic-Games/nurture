@@ -19,6 +19,8 @@ export (int) var growing_time
 export (int) var clicks_to_harvest
 export (float) var downtime
 export (float) var score
+export (int) var gold_dropped = 1
+export (int) var essence_dropped = 0
 
 # variables about nurturing
 export (int) var nurture_threshold = 0

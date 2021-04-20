@@ -1,6 +1,5 @@
 extends Node2D
 
-export (int) var SCORE_INCREASE_RATE = 1000
 
 onready var goals
 onready var next_level
@@ -11,24 +10,12 @@ onready var spacer = preload("res://GoalController/Spacer.tscn")
 onready var menu = load("res://TestScene/Menu.tscn")
 onready var popup_grid = get_node("Popup/PopupGrid/GridContainer")
 onready var popup_animator = get_node("Popup/AnimationPlayer")
-onready var score_audio = get_node("ScoreAudio")
+
 onready var is_collapsed = true
 onready var goal_tally = []
-onready var score = 0
-onready var goal_score = 0
 
 
 func _process(delta):
-	if score < goal_score:
-		score = min(score + int(SCORE_INCREASE_RATE * delta), goal_score)
-		get_node("Score").text = "SCORE: " + String(score)
-		score_audio.playing = true
-	elif score > goal_score:
-		score = max(score - int(SCORE_INCREASE_RATE * delta), goal_score)
-		get_node("Score").text = "SCORE: " + String(score)
-		score_audio.playing = true
-	else:
-		score_audio.playing = false
 	
 	if (Input.is_action_just_pressed("dev_button")):
 		game_over()
@@ -39,6 +26,7 @@ func _on_Area2D_input_event(_viewport, event, _shape_idx):
 	if (event is InputEventMouseButton && event.button_index == BUTTON_LEFT && event.pressed):
 		# bring in the box
 		popup_goals()
+
 
 func populate_goals():
 	
@@ -102,9 +90,6 @@ func check_for_goal(plant):
 	if (goals.size() == 0):
 		game_over()
 
-
-func increase_score(plant_score, multiplier):
-	goal_score += plant_score*multiplier
 
 func game_over():
 	popup_grid.get_parent().get_node("HideGoals").visible = false

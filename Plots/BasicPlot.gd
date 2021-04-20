@@ -17,12 +17,17 @@ onready var idle_anim = get_node("PlantSprite/Idling")
 onready var plant_sprite = get_node("PlantSprite")
 onready var plant_downtimer = get_node("PlantDowntime")
 onready var player_controller = get_tree().get_nodes_in_group('player')[0]
+onready var player_inventory = get_tree().get_nodes_in_group('player_inventory')[0]
 onready var happy_noise = get_node("HappyNoise")
 onready var angry_noise = get_node("AngryNoise")
 onready var love_emitter = get_node("LoveParticle")
 onready var angry_emitter = get_node("AngryParticle")
 onready var water_emitter = get_node("WaterParticle")
 onready var hover_text = get_node("HoverText")
+
+onready var seed_drop = preload("res://Drops/SeedDrops/SeedDrop.tscn")
+
+signal gain_coins
 
 
 func _on_Area2D_mouse_entered():
@@ -119,20 +124,21 @@ func drop_seeds():
 	if (current_plant.drops_seed):
 		drops_count = rng.randi_range(1, current_plant.max_own_seeds_dropped)
 		for seedling in drops_count:
-			player_controller.gain_seed(current_plant)
+			player_inventory.gain_seed(current_plant)
+			drop_seed(current_plant)
 	
 	# Give the player a chance for other seeds, if the plant has any
 	if (current_plant.other_drops.size() > 0 && rng.randf() <= current_plant.others_drop_chance):
 		drops_count = rng.randi_range(1, current_plant.max_others_dropped)
 		for seedling in drops_count:
 			var drop = current_plant.other_drops[rng.randi_range(0,current_plant.other_drops.size()-1)]
-			player_controller.gain_seed(drop)
+			player_inventory.gain_seed(drop)
 	
 	if (times_nurtured >= current_plant.nurture_threshold && current_plant.rare_drops.size() > 0 && rng.randf() <= current_plant.rare_seed_drop_chance):
 		var x = 0
 		while x < current_plant.rare_seeds_dropped_if_nurtured:
 			current_plant.rare_drops.shuffle()
-			player_controller.gain_seed(current_plant.rare_drops[0])
+			player_inventory.gain_seed(current_plant.rare_drops[0])
 			x += 1
 
 
@@ -212,10 +218,17 @@ func harvest_plant():
 	
 	# After harvest is done, remove the plant
 	if (times_harvested >= current_plant.clicks_to_harvest):
+		gain_coins()
+		player_inventory.gain_plant(current_plant)
 		empty_plot()
 
 func nurture_plant():
 	times_nurtured += 1
+
+
+func gain_coins():
+	# Caught by the money manager
+	emit_signal("gain_coins", current_plant.gold_dropped)
 
 
 func empty_plot():
@@ -234,7 +247,15 @@ func drop_own_seed():
 	rng.randomize()
 	# Check to add the plant as a seed of itself
 	if (current_plant.drops_seed && rng.randf() <= current_plant.seed_drop_chance):
-		player_controller.gain_seed(current_plant)
+		player_inventory.gain_seed(current_plant)
+		drop_seed(current_plant)
+
+
+func drop_seed(current_plant):
+	var seedling = seed_drop.instance()
+	get_tree().get_root().add_child(seedling)
+	seedling.global_position = self.global_position
+	seedling.initialize(current_plant)
 
 
 func _on_PlantDowntime_timeout():

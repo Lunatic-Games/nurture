@@ -1,9 +1,8 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://GoalController/GoalController.gd" type="Script" id=1]
 [ext_resource path="res://GoalController/goal_button.png" type="Texture" id=3]
 [ext_resource path="res://Yagitudeh.otf" type="DynamicFontData" id=4]
-[ext_resource path="res://Music/score.wav" type="AudioStream" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -59,9 +58,9 @@ pause_mode = 2
 ]]
 pause_mode = 2
 script = ExtResource( 1 )
-SCORE_INCREASE_RATE = 100
 
 [node name="Score" type="RichTextLabel" parent="GoalController"]
+visible = false
 margin_left = 20.0
 margin_top = 18.595
 margin_right = 283.0
@@ -136,16 +135,13 @@ custom_fonts/font = SubResource( 5 )
 text = "Next Level"
 
 [node name="GoalSprite" type="Sprite" parent="GoalController"]
-position = Vector2( 380, 539.5 )
+position = Vector2( 984, 37.5 )
 texture = ExtResource( 3 )
 
 [node name="Area2D" type="Area2D" parent="GoalController/GoalSprite"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GoalController/GoalSprite/Area2D"]
 shape = SubResource( 6 )
-
-[node name="ScoreAudio" type="AudioStreamPlayer2D" parent="GoalController"]
-stream = ExtResource( 6 )
 [connection signal="pressed" from="GoalController/Popup/PopupGrid/HideGoals" to="GoalController" method="_on_HideGoals_pressed"]
 [connection signal="pressed" from="GoalController/Popup/PopupGrid/Menu" to="GoalController" method="_on_Menu_pressed"]
 [connection signal="pressed" from="GoalController/Popup/PopupGrid/NextLevel" to="GoalController" method="_on_NextLevel_pressed"]

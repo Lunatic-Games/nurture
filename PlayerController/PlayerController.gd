@@ -6,9 +6,9 @@ onready var test_seed = preload("res://Plants/cablit.tres")
 onready var dig_particle = preload("res://DiggableAreas/DigParticle.tscn")
 
 # Nodes
-onready var seed_box = get_node("CanvasLayer/SeedBox")
 onready var camera = get_node("Camera2D")
 onready var animator = get_node("ScreenShake")
+onready var inventory = get_node("PlayerInventoryOverlay/PlayerInventory")
 
 # World bound vars
 onready var world_bounds_center = Vector2(0,0)# Vector2(OS.window_size[0] / 2, OS.window_size[1] / 2)
@@ -21,6 +21,7 @@ onready var seed_dig_chance = 0.01
 onready var rng = RandomNumberGenerator.new()
 
 onready var held_seed
+onready var held_plant
 
 
 
@@ -36,6 +37,10 @@ func _physics_process(delta):
 	if (held_seed):
 		held_seed.move_seed()
 	
+	# Handle plant movement
+	if (held_plant):
+		held_plant.move_plant()
+	
 	# Handle mouse input
 	handle_mouse_input(space_state)
 
@@ -50,25 +55,31 @@ func handle_mouse_input(space_state):
 		
 		# Handle seed movement
 		if (held_seed):
+			# Raycast for a plot, try and plant if able
+			var sown_seed = attempt_seed_sowing(space_state)
 			
-			# Check to see if the seed is within the seed box rect
-			if (is_seed_in_seed_box()):
-				# Move the seed to the new position
-				held_seed.seed_box_pos = held_seed.position
-		
-			# If the seed is released outside of the seedbox
-			else:
-				
-				# Raycast for a plot, try and plant if able
-				attempt_seed_sowing(space_state)
+			# If the seed was not sowed, add it back to inventory
+			if (! sown_seed):
+				inventory.gain_seed(held_seed.plant)
 			
-			# Move the seed to the seedbox
-			held_seed.position = held_seed.seed_box_pos
+			# After all is done, release the seed
+			held_seed.queue_free()
+			held_seed = null
+		elif (held_plant):
+			
+			var action = attempt_plant_action(space_state)
+			
+			# If no action was taken, add the plant to inventory
+			if (! action):
+				inventory.gain_plant(held_plant.plant)
+			
+			# After all is done, return plant
+			held_plant.queue_free()
+			held_plant = null
 		else:
+			
+			# Not holding a seed
 			attempt_dig_for_seed(space_state)
-		
-		# After all is done, release the seed
-		held_seed = null
 
 func move_camera_by_input(delta):
 	var direction = Vector2(0,0)
@@ -104,32 +115,6 @@ func in_bounds(direction):
 
 
 
-func gain_seed(plant_seed):
-	
-	# Calculate the area to add the seed to
-	var rect_size = seed_box.rect_size
-	#var rect_position = seed_box.rect_position
-	
-	rng.randomize()
-	var x_pos = rng.randi_range(SEED_SIZE, rect_size[0] - SEED_SIZE)
-	var y_pos = rng.randi_range(SEED_SIZE, rect_size[1] - SEED_SIZE)
-	var seedling = base_seed.instance()
-	seedling.plant = plant_seed
-	seed_box.add_child(seedling)
-	seedling.get_node("Sprite").texture = seedling.plant.seed_sprite
-	seedling.position = Vector2(x_pos, y_pos)
-
-
-
-func is_seed_in_seed_box():
-	var seedbox_size = held_seed.seedbox_parent.rect_size
-	
-	if (held_seed.position[0] < seedbox_size[0] && held_seed.position[0] >= 0 && held_seed.position[1] < seedbox_size[1] && held_seed.position[1] >= 0):
-		return true 
-	return false
-
-
-
 func attempt_seed_sowing(space_state):
 	var result = space_state.intersect_ray(get_global_mouse_position(), get_global_mouse_position()+Vector2(0.1, 0.1), [], 2, false, true)
 	
@@ -141,6 +126,23 @@ func attempt_seed_sowing(space_state):
 		# If the plot has no plant, plant the seed
 		if (held_seed && plot.current_plant == null):
 			held_seed.sow(plot)
+			return true
+	return false
+
+
+func attempt_plant_action(space_state):
+	var result = space_state.intersect_ray(get_global_mouse_position(), get_global_mouse_position()+Vector2(0.1, 0.1), [], 1, false, true)
+	
+	# Set the plot as the intersected node
+	var node
+	if (result.has("collider")):
+		node = result["collider"].get_parent()
+		
+		if (node.is_in_group("plant_actionable")):
+			node.handle_plant(held_plant.plant)
+			return true
+	
+	return false
 
 
 
@@ -153,7 +155,7 @@ func attempt_dig_for_seed(space_state):
 			
 		rng.randomize()
 		if (rng.randf() <= seed_dig_chance):
-			gain_seed(test_seed)
+			inventory.gain_seed(test_seed)
 		
 		shake_screen()
 

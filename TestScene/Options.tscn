@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Yagitudeh.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://TestScene/Options.gd" type="Script" id=2]
@@ -13,36 +13,64 @@
 [ext_resource path="res://checkbox_checked.png" type="Texture" id=11]
 [ext_resource path="res://TestScene/background.png" type="Texture" id=12]
 
-[sub_resource type="StyleBoxFlat" id=9]
+[sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.25098, 0.0470588, 0.223529, 0.290196 )
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="Animation" id=2]
+resource_name = "SlideFromRight"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 352, 21 ), Vector2( 299, 21 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../VBoxContainer:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 364.815, 49.89 ), Vector2( 311.815, 49.8903 ) ]
+}
+
+[sub_resource type="DynamicFont" id=3]
 size = 64
 font_data = ExtResource( 1 )
 
-[sub_resource type="StyleBoxLine" id=2]
+[sub_resource type="StyleBoxLine" id=4]
 color = Color( 0.25098, 0.0470588, 0.223529, 1 )
 
-[sub_resource type="StyleBoxLine" id=3]
+[sub_resource type="StyleBoxLine" id=5]
 color = Color( 0.25098, 0.0470588, 0.223529, 1 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=6]
 size = 64
 font_data = ExtResource( 1 )
 
-[sub_resource type="StyleBoxTexture" id=5]
+[sub_resource type="StyleBoxTexture" id=7]
 texture = ExtResource( 8 )
 region_rect = Rect2( 0, 0, 128, 64 )
 
-[sub_resource type="StyleBoxTexture" id=6]
+[sub_resource type="StyleBoxTexture" id=8]
 texture = ExtResource( 6 )
 region_rect = Rect2( 0, 0, 128, 64 )
 
-[sub_resource type="StyleBoxTexture" id=7]
+[sub_resource type="StyleBoxTexture" id=9]
 texture = ExtResource( 5 )
 region_rect = Rect2( 0, 0, 128, 64 )
 
-[sub_resource type="DynamicFont" id=8]
+[sub_resource type="DynamicFont" id=10]
 size = 64
 font_data = ExtResource( 1 )
 
@@ -64,20 +92,23 @@ __meta__ = {
 }
 
 [node name="Panel" type="Panel" parent="."]
-margin_left = 299.0
+margin_left = 352.0
 margin_top = 21.0
-margin_right = 775.0
+margin_right = 828.0
 margin_bottom = 585.0
-custom_styles/panel = SubResource( 9 )
+custom_styles/panel = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="MenuSlideIn" type="AnimationPlayer" parent="Panel"]
+anims/SlideFromRight = SubResource( 2 )
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-margin_left = 311.815
-margin_top = 49.8903
-margin_right = 761.815
-margin_bottom = 546.89
+margin_left = 364.815
+margin_top = 49.89
+margin_right = 814.815
+margin_bottom = 556.89
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -86,7 +117,7 @@ __meta__ = {
 margin_right = 450.0
 margin_bottom = 69.0
 size_flags_horizontal = 7
-custom_fonts/normal_font = SubResource( 1 )
+custom_fonts/normal_font = SubResource( 3 )
 text = "  Options Menu"
 fit_content_height = true
 __meta__ = {
@@ -104,7 +135,7 @@ margin_top = 107.0
 margin_right = 450.0
 margin_bottom = 176.0
 size_flags_horizontal = 7
-custom_fonts/normal_font = SubResource( 1 )
+custom_fonts/normal_font = SubResource( 3 )
 text = "  Music Volume"
 fit_content_height = true
 __meta__ = {
@@ -116,10 +147,11 @@ margin_top = 180.0
 margin_right = 450.0
 margin_bottom = 212.0
 rect_min_size = Vector2( 450, 30 )
+focus_mode = 0
 size_flags_horizontal = 3
 custom_icons/grabber_highlight = ExtResource( 7 )
 custom_icons/grabber = ExtResource( 9 )
-custom_styles/slider = SubResource( 2 )
+custom_styles/slider = SubResource( 4 )
 value = 100.0
 
 [node name="Control" type="Control" parent="VBoxContainer"]
@@ -133,7 +165,7 @@ margin_top = 250.0
 margin_right = 450.0
 margin_bottom = 319.0
 size_flags_horizontal = 7
-custom_fonts/normal_font = SubResource( 1 )
+custom_fonts/normal_font = SubResource( 3 )
 text = "  Sound Volume"
 fit_content_height = true
 __meta__ = {
@@ -145,29 +177,32 @@ margin_top = 323.0
 margin_right = 450.0
 margin_bottom = 355.0
 rect_min_size = Vector2( 250, 30 )
+focus_mode = 0
 size_flags_horizontal = 3
 custom_icons/grabber_highlight = ExtResource( 7 )
 custom_icons/grabber = ExtResource( 9 )
-custom_styles/slider = SubResource( 3 )
+custom_styles/slider = SubResource( 5 )
 value = 100.0
 
 [node name="Fullscreen" type="CheckBox" parent="VBoxContainer"]
 margin_top = 359.0
 margin_right = 450.0
 margin_bottom = 435.0
+focus_mode = 0
 custom_icons/checked = ExtResource( 11 )
 custom_icons/unchecked = ExtResource( 10 )
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 6 )
 text = "Fullscreen"
 
 [node name="Back" type="Button" parent="VBoxContainer"]
 margin_top = 439.0
 margin_right = 450.0
 margin_bottom = 507.0
-custom_styles/hover = SubResource( 5 )
-custom_styles/pressed = SubResource( 6 )
-custom_styles/normal = SubResource( 7 )
-custom_fonts/font = SubResource( 8 )
+focus_mode = 0
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/normal = SubResource( 9 )
+custom_fonts/font = SubResource( 10 )
 text = "Main Menu"
 
 [node name="MusicPlayer" type="AudioStreamPlayer2D" parent="."]

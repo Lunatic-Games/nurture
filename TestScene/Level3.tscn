@@ -1,20 +1,21 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://forest_tilemap.tres" type="TileSet" id=1]
 [ext_resource path="res://Plots/BasicPlot.tscn" type="PackedScene" id=2]
 [ext_resource path="res://PlayerController/PlayerController.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Plants/bunt.tres" type="Resource" id=4]
+[ext_resource path="res://Plants/bunt_grown.png" type="Texture" id=4]
 [ext_resource path="res://Music/para_beat_01.wav" type="AudioStream" id=5]
-[ext_resource path="res://Plants/ice_melon_grown.png" type="Texture" id=6]
+[ext_resource path="res://Plants/papier_grown.png" type="Texture" id=6]
 [ext_resource path="res://TestScene/Level.gd" type="Script" id=7]
 [ext_resource path="res://Plants/ice_melon.tres" type="Resource" id=8]
 [ext_resource path="res://GoalController/GoalController.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Plants/grunth_grown.png" type="Texture" id=10]
+[ext_resource path="res://Plants/sheela_grown.png" type="Texture" id=10]
+[ext_resource path="res://Plants/grunth.tres" type="Resource" id=11]
 
 [node name="Level3" type="Node2D"]
 script = ExtResource( 7 )
-level_goals = [ [ ExtResource( 6 ), 3 ], [ ExtResource( 10 ), 3 ] ]
-starting_seeds = [ ExtResource( 8 ), ExtResource( 4 ) ]
+level_goals = [ [ ExtResource( 4 ), 2 ], [ ExtResource( 6 ), 3 ], [ ExtResource( 10 ), 1 ] ]
+starting_seeds = [ ExtResource( 8 ), ExtResource( 11 ) ]
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2( 2, 1 )
