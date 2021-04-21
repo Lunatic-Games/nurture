@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Yagitudeh.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://TestScene/Options.gd" type="Script" id=2]
-[ext_resource path="res://Music/para_beat_01.wav" type="AudioStream" id=3]
+[ext_resource path="res://Music/epiphany_ranch.wav" type="AudioStream" id=3]
 [ext_resource path="res://Music/plant_happy.wav" type="AudioStream" id=4]
 [ext_resource path="res://UI_Button_1.png" type="Texture" id=5]
 [ext_resource path="res://UI_Button_Down.png" type="Texture" id=6]

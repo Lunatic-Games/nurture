@@ -9,6 +9,20 @@ onready var audio_player = get_node("OptionsSettings/SoundsSettings/SoundPlayer"
 
 onready var menu_scene = load("res://TestScene/Menu.tscn")
 
+func _ready():
+	var music_slider = $OptionsSettings/MusicSettings/MusicSlider
+	var sound_slider = $OptionsSettings/SoundsSettings/SoundsSlider
+	
+	# Set the sliders to the correct position
+	var db = AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Music"))
+	var value = db2linear(db)
+	music_slider.value = value*SLIDER_MAX_VAL
+	
+	db = AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Sound"))
+	value = db2linear(db)
+	sound_slider.value = value*SLIDER_MAX_VAL
+
+
 func _process(_delta):
 	if (Input.is_action_just_pressed("pause")):
 		toggle()

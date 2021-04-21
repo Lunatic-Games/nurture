@@ -4,7 +4,7 @@
 [ext_resource path="res://Plots/BasicPlot.tscn" type="PackedScene" id=2]
 [ext_resource path="res://PlayerController/PlayerController.tscn" type="PackedScene" id=3]
 [ext_resource path="res://DiggableAreas/DiggableArea.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Music/para_beat_01.wav" type="AudioStream" id=5]
+[ext_resource path="res://Music/epiphany_ranch.wav" type="AudioStream" id=5]
 [ext_resource path="res://GoalController/GoalController.tscn" type="PackedScene" id=6]
 [ext_resource path="res://TestScene/Level.gd" type="Script" id=7]
 [ext_resource path="res://Plants/cablit_grown.png" type="Texture" id=8]
@@ -14,7 +14,7 @@
 [ext_resource path="res://MoneyManager/MoneyManager.tscn" type="PackedScene" id=12]
 [ext_resource path="res://ClickableItems/ProduceBox/ProduceBox.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Deities/Meadows/MeadowsDeity.tscn" type="PackedScene" id=14]
-[ext_resource path="res://Deities/DeityBox.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Deities/DeityFlag.tscn" type="PackedScene" id=15]
 
 [node name="Level1" type="Node2D"]
 script = ExtResource( 7 )
@@ -85,9 +85,8 @@ position = Vector2( 111.728, 60.0678 )
 
 [node name="Stag" parent="." instance=ExtResource( 14 )]
 
-[node name="DeityBox" parent="." instance=ExtResource( 15 )]
-position = Vector2( -434, -113 )
-scale = Vector2( 2.16, 5.52 )
+[node name="DeityFlag" parent="." instance=ExtResource( 15 )]
+position = Vector2( -451, 97 )
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
 pause_mode = 2

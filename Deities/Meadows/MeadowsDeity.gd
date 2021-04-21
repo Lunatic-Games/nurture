@@ -8,7 +8,7 @@ var MAX_APPEARANCE_TIME = 6
 onready var appearance_timer = $AppearanceTimer
 onready var offering_timer = $OfferingTimer
 
-onready var destination_box = get_tree().get_nodes_in_group('deity_box')[0]
+onready var destination_flag = get_tree().get_nodes_in_group('deity_flag')[0]
 onready var rng = RandomNumberGenerator.new()
 
 
@@ -26,7 +26,7 @@ func _ready():
 func enter_world_space():
 	
 	# Select the destination
-	var destination = get_random_position_in_box(destination_box)
+	var destination = destination_flag.global_position + get_spawn_offset()
 	
 	# Move to the destination
 	global_position = destination
@@ -49,11 +49,15 @@ func _on_AppearanceTimer_timeout():
 
 
 # Returns a random position within the box
-func get_random_position_in_box(box):
-	var box_sprite = box.get_node("Sprite")
-	var box_pos = box.global_position
-	var box_size = box_sprite.texture.get_size() * box_sprite.scale
-	print(box_size)
-	
-	var chosen_position = box_pos + Vector2(rng.randf_range(-box_size.x, box_size.x), rng.randf_range(-box_size.y, box_size.y))
-	return chosen_position
+func get_spawn_offset():
+	return Vector2(rng.randf_range(-64, 64), rng.randf_range(-64, 64))
+
+
+# Enable displaying ui
+func _on_VisibilityNotifier2D_screen_entered():
+	pass # Replace with function body.
+
+
+# Disable displaying ui
+func _on_VisibilityNotifier2D_screen_exited():
+	pass # Replace with function body.
