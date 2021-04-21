@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://forest_tilemap.tres" type="TileSet" id=1]
 [ext_resource path="res://Plots/BasicPlot.tscn" type="PackedScene" id=2]
@@ -13,6 +13,8 @@
 [ext_resource path="res://Plants/ice_melon_grown.png" type="Texture" id=11]
 [ext_resource path="res://MoneyManager/MoneyManager.tscn" type="PackedScene" id=12]
 [ext_resource path="res://ClickableItems/ProduceBox/ProduceBox.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Deities/Meadows/MeadowsDeity.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Deities/DeityBox.tscn" type="PackedScene" id=15]
 
 [node name="Level1" type="Node2D"]
 script = ExtResource( 7 )
@@ -80,6 +82,12 @@ position = Vector2( 188.916, 60.0678 )
 position = Vector2( 111.728, 60.0678 )
 
 [node name="MoneyManager" parent="." instance=ExtResource( 12 )]
+
+[node name="Stag" parent="." instance=ExtResource( 14 )]
+
+[node name="DeityBox" parent="." instance=ExtResource( 15 )]
+position = Vector2( -434, -113 )
+scale = Vector2( 2.16, 5.52 )
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
 pause_mode = 2
