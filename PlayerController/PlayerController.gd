@@ -132,11 +132,13 @@ func attempt_seed_sowing(space_state):
 
 func attempt_plant_action(space_state):
 	var result = space_state.intersect_ray(get_global_mouse_position(), get_global_mouse_position()+Vector2(0.1, 0.1), [], 1, false, true)
+	print(result)
 	
 	# Set the plot as the intersected node
 	var node
 	if (result.has("collider")):
 		node = result["collider"].get_parent()
+		print(node)
 		
 		if (node.is_in_group("plant_actionable")):
 			node.handle_plant(held_plant.plant)

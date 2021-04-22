@@ -1,14 +1,27 @@
 extends Node2D
 
-var APPEARANCE_MULTIPLIER = 1
-var MIN_APPEARANCE_TIME = 3
-var MAX_APPEARANCE_TIME = 6
+
+export (Array, Resource) var offerings
+export (Array, Resource) var rewards
 
 
+var TIME_MULTIPLIER = 1
+var MIN_APPEARANCE_TIME = 5
+var MAX_APPEARANCE_TIME = 8
+var MIN_OFFERING_TIME = 1
+var MAX_OFFERING_TIME = 2
+
+
+onready var offerings_completed = 0
 onready var appearance_timer = $AppearanceTimer
 onready var offering_timer = $OfferingTimer
+onready var tween = $Tween
+onready var display_offering = false
+onready var in_world = false
 
 onready var destination_flag = get_tree().get_nodes_in_group('deity_flag')[0]
+onready var home_flag = get_tree().get_nodes_in_group('deity_home')[0]
+onready var player_inventory = get_tree().get_nodes_in_group('player_inventory')[0]
 onready var rng = RandomNumberGenerator.new()
 
 
@@ -18,28 +31,90 @@ func _ready():
 	rng.randomize()
 	
 	# Set the inital time until the deity appears
-	var appearance_time = rng.randf_range(3, 6)
-	appearance_timer.start(appearance_time)
+	var appearance_time = rng.randf_range(MIN_APPEARANCE_TIME, MAX_APPEARANCE_TIME)
+	appearance_timer.start(appearance_time * TIME_MULTIPLIER)
+	
+	set_current_offering()
+
+
+
+# TODO Add offering resource and use it instead of plant resource
+func set_current_offering():
+	$OfferingPane/Offering.texture = offerings[offerings_completed].plant_sprite
+
+
+func handle_plant(offering):
+	
+	print("HANDLING OFFERING")
+	
+	# The offering is correct
+	if is_plant_offering(offering):
+		offerings_completed += 1
+		print("Completed offering")
+		
+		# Play acknowledging sound (Bell chiming??)
+		
+		# Drop a reward if applicable
+		
+		set_current_offering()
+	
+	# Offering was not correct
+	else:
+		print("Offering was wrong")
+		
+		# Play grunt sound
+		
+		# Add item back to player inventory
+		player_inventory.gain_plant(offering)
+
+
+
+# Returns true if the offering is correct
+func is_plant_offering(offering):
+	if (offering == offerings[offerings_completed]):
+		return true
+	return false
+
 
 
 # Moves the deity into the world space
 func enter_world_space():
+	in_world = true
 	
 	# Select the destination
 	var destination = destination_flag.global_position + get_spawn_offset()
 	
 	# Move to the destination
-	global_position = destination
+	var tween = get_node("Tween")
+	tween.interpolate_property(self, "position",
+		global_position, destination, 5)
+	tween.start()
 	
-	# Upon reaching the destination
-	# Wait a few moments
-	display_offering_ui()
+
+
+# Moves the deity into the world space
+func leave_world_space():
+	
+	in_world = false
+	# Select the destination
+	var destination = home_flag.global_position + get_spawn_offset()
+	
+	# Move to the destination
+	var tween = get_node("Tween")
+	tween.interpolate_property(self, "position",
+		global_position, destination, 5)
+	tween.start()
 
 
 
 # Display the ui for the offering to be made
 func display_offering_ui():
-	pass
+	display_offering = true
+	$OfferingPane.visible = true
+	
+	# start the offering timer
+	var offering_time = rng.randf_range(MIN_OFFERING_TIME, MAX_OFFERING_TIME)
+	offering_timer.start(offering_time * TIME_MULTIPLIER)
 
 
 
@@ -61,3 +136,27 @@ func _on_VisibilityNotifier2D_screen_entered():
 # Disable displaying ui
 func _on_VisibilityNotifier2D_screen_exited():
 	pass # Replace with function body.
+
+
+# No offer was given in time, leave
+func _on_OfferingTimer_timeout():
+	
+	# Offering failed
+	display_offering = false
+	$OfferingPane.visible = false
+	
+	# Leave
+	leave_world_space()
+
+
+
+# Deity arrived at destination
+func _on_Tween_tween_completed(object, key):
+	
+	if (in_world):
+		display_offering_ui()
+	else:
+		
+		# Set the time until the deity appears again
+		var appearance_time = rng.randf_range(MIN_APPEARANCE_TIME, MAX_APPEARANCE_TIME)
+		appearance_timer.start(appearance_time * TIME_MULTIPLIER)

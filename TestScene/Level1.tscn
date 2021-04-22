@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://forest_tilemap.tres" type="TileSet" id=1]
 [ext_resource path="res://Plots/BasicPlot.tscn" type="PackedScene" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://ClickableItems/ProduceBox/ProduceBox.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Deities/Meadows/MeadowsDeity.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Deities/DeityFlag.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Deities/DeityHome.tscn" type="PackedScene" id=16]
 
 [node name="Level1" type="Node2D"]
 script = ExtResource( 7 )
@@ -93,3 +94,6 @@ pause_mode = 2
 stream = ExtResource( 5 )
 autoplay = true
 bus = "Music"
+
+[node name="DeityHome" parent="." instance=ExtResource( 16 )]
+position = Vector2( -919.631, 121.194 )
