@@ -79,7 +79,8 @@ func handle_mouse_input(space_state):
 		else:
 			
 			# Not holding a seed
-			attempt_dig_for_seed(space_state)
+			#attempt_dig_for_seed(space_state)
+			pass
 
 func move_camera_by_input(delta):
 	var direction = Vector2(0,0)

@@ -14,17 +14,18 @@ func _ready():
 
 # TODO Add offering resource and use it instead of plant resource
 func set_current_offering():
-	$Offering.texture = offerings[offerings_completed].plant_sprite
+	if (offerings_completed < offerings.size()):
+		$Offering.texture = offerings[offerings_completed].plant_sprite
+	else:
+		print("Appeased the deity")
 
 
 func handle_plant(offering):
 	
-	print("HANDLING OFFERING")
-	
 	# The offering is correct
 	if is_plant_offering(offering):
 		offerings_completed += 1
-		print("Completed offering")
+		visible = false
 		
 		# Play acknowledging sound (Bell chiming??)
 		
@@ -34,7 +35,6 @@ func handle_plant(offering):
 	
 	# Offering was not correct
 	else:
-		print("Offering was wrong")
 		
 		# Play grunt sound
 		

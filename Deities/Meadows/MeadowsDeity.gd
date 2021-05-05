@@ -16,6 +16,7 @@ onready var offerings_completed = 0
 onready var appearance_timer = $AppearanceTimer
 onready var offering_timer = $OfferingTimer
 onready var tween = $Tween
+onready var stag_animator = $StagAnimator
 onready var display_offering = false
 onready var in_world = false
 
@@ -90,6 +91,10 @@ func enter_world_space():
 		global_position, destination, 5)
 	tween.start()
 	
+	# Start the animation
+	stag_animator.play("walk")
+	$Sprite.flip_h = false
+	
 
 
 # Moves the deity into the world space
@@ -104,6 +109,10 @@ func leave_world_space():
 	tween.interpolate_property(self, "position",
 		global_position, destination, 5)
 	tween.start()
+	
+	# Start the animation
+	stag_animator.play("walk")
+	$Sprite.flip_h = true
 
 
 
@@ -154,7 +163,16 @@ func _on_OfferingTimer_timeout():
 func _on_Tween_tween_completed(object, key):
 	
 	if (in_world):
+		stag_animator.play("r_idle")
+		# Wait 0.5 seconds, then resume execution.
+		yield(get_tree().create_timer(0.5), "timeout")
+		stag_animator.play("look")
+		# Wait 2 seconds, then resume execution.	
+		yield(get_tree().create_timer(2.0), "timeout")
 		display_offering_ui()
+		# Wait 6 seconds, then resume execution.
+		yield(get_tree().create_timer(6.0), "timeout")
+		stag_animator.play("ear_flick")
 	else:
 		
 		# Set the time until the deity appears again
