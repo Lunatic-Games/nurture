@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/plant_happy.wav-2b964e7ee4741d2b769c178fc907bde2.sample"
+
+[deps]
+
+source_file="res://assets/music/plant_happy.wav"
+dest_files=[ "res://.import/plant_happy.wav-2b964e7ee4741d2b769c178fc907bde2.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

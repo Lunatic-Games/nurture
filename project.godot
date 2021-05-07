@@ -12,12 +12,12 @@ _global_script_classes=[ {
 "base": "Resource",
 "class": "plant",
 "language": "GDScript",
-"path": "res://Plants/PLANT.gd"
+"path": "res://plants/PLANT.gd"
 }, {
 "base": "Resource",
 "class": "plant_seed",
 "language": "GDScript",
-"path": "res://PlantSeeds/PLANT_SEED.gd"
+"path": "res://plant_seeds/PLANT_SEED.gd"
 } ]
 _global_script_class_icons={
 "plant": "",
@@ -27,7 +27,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Garden Madness"
-run/main_scene="res://TestScene/Menu.tscn"
+run/main_scene="res://menus/main_menu/main_menu.tscn"
 config/icon="res://icon.png"
 
 [display]

@@ -1,0 +1,224 @@
+[gd_scene load_steps=23 format=2]
+
+[ext_resource path="res://menus/options/options.gd" type="Script" id=1]
+[ext_resource path="res://Yagitudeh.otf" type="DynamicFontData" id=2]
+[ext_resource path="res://UI_Button_1.png" type="Texture" id=3]
+[ext_resource path="res://assets/music/plant_happy.wav" type="AudioStream" id=4]
+[ext_resource path="res://grabber_cablit.png" type="Texture" id=5]
+[ext_resource path="res://checkbox_unchecked.png" type="Texture" id=6]
+[ext_resource path="res://checkbox_checked.png" type="Texture" id=7]
+[ext_resource path="res://UI_Button_Down.png" type="Texture" id=8]
+[ext_resource path="res://grabber_cablit_hovered.png" type="Texture" id=9]
+[ext_resource path="res://assets/music/epiphany_ranch.wav" type="AudioStream" id=10]
+[ext_resource path="res://UI_Button_Hovered.png" type="Texture" id=11]
+
+[sub_resource type="StreamTexture" id=1]
+flags = 4
+load_path = "res://.import/background.png-1e56079d3fc188d4917ef7229b3b8466.stex"
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.25098, 0.0470588, 0.223529, 0.290196 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "SlideFromRight"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 352, 21 ), Vector2( 299, 21 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../VBoxContainer:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 364.815, 49.89 ), Vector2( 311.815, 49.8903 ) ]
+}
+
+[sub_resource type="DynamicFont" id=4]
+size = 64
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxLine" id=5]
+color = Color( 0.25098, 0.0470588, 0.223529, 1 )
+
+[sub_resource type="StyleBoxLine" id=6]
+color = Color( 0.25098, 0.0470588, 0.223529, 1 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 64
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxTexture" id=8]
+texture = ExtResource( 11 )
+region_rect = Rect2( 0, 0, 128, 64 )
+
+[sub_resource type="StyleBoxTexture" id=9]
+texture = ExtResource( 8 )
+region_rect = Rect2( 0, 0, 128, 64 )
+
+[sub_resource type="StyleBoxTexture" id=10]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 128, 64 )
+
+[sub_resource type="DynamicFont" id=11]
+size = 64
+font_data = ExtResource( 2 )
+
+[node name="Options" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 1024.0
+margin_bottom = 601.0
+texture = SubResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="."]
+margin_left = 352.0
+margin_top = 21.0
+margin_right = 828.0
+margin_bottom = 585.0
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MenuSlideIn" type="AnimationPlayer" parent="Panel"]
+anims/SlideFromRight = SubResource( 3 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 364.815
+margin_top = 49.89
+margin_right = 814.815
+margin_bottom = 556.89
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Options" type="RichTextLabel" parent="VBoxContainer"]
+margin_right = 450.0
+margin_bottom = 69.0
+size_flags_horizontal = 7
+custom_fonts/normal_font = SubResource( 4 )
+text = "  Options Menu"
+fit_content_height = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control2" type="Control" parent="VBoxContainer"]
+margin_top = 73.0
+margin_right = 450.0
+margin_bottom = 103.0
+rect_min_size = Vector2( 0, 30 )
+
+[node name="MusicVolume" type="RichTextLabel" parent="VBoxContainer"]
+margin_top = 107.0
+margin_right = 450.0
+margin_bottom = 176.0
+size_flags_horizontal = 7
+custom_fonts/normal_font = SubResource( 4 )
+text = "  Music Volume"
+fit_content_height = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MusicSlider" type="HSlider" parent="VBoxContainer"]
+margin_top = 180.0
+margin_right = 450.0
+margin_bottom = 212.0
+rect_min_size = Vector2( 450, 30 )
+focus_mode = 0
+size_flags_horizontal = 3
+custom_icons/grabber_highlight = ExtResource( 9 )
+custom_icons/grabber = ExtResource( 5 )
+custom_styles/slider = SubResource( 5 )
+value = 100.0
+
+[node name="Control" type="Control" parent="VBoxContainer"]
+margin_top = 216.0
+margin_right = 450.0
+margin_bottom = 246.0
+rect_min_size = Vector2( 0, 30 )
+
+[node name="SoundVolume" type="RichTextLabel" parent="VBoxContainer"]
+margin_top = 250.0
+margin_right = 450.0
+margin_bottom = 319.0
+size_flags_horizontal = 7
+custom_fonts/normal_font = SubResource( 4 )
+text = "  Sound Volume"
+fit_content_height = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SoundsSlider" type="HSlider" parent="VBoxContainer"]
+margin_top = 323.0
+margin_right = 450.0
+margin_bottom = 355.0
+rect_min_size = Vector2( 250, 30 )
+focus_mode = 0
+size_flags_horizontal = 3
+custom_icons/grabber_highlight = ExtResource( 9 )
+custom_icons/grabber = ExtResource( 5 )
+custom_styles/slider = SubResource( 6 )
+value = 100.0
+
+[node name="Fullscreen" type="CheckBox" parent="VBoxContainer"]
+margin_top = 359.0
+margin_right = 450.0
+margin_bottom = 435.0
+focus_mode = 0
+custom_icons/checked = ExtResource( 7 )
+custom_icons/unchecked = ExtResource( 6 )
+custom_fonts/font = SubResource( 7 )
+text = "Fullscreen"
+
+[node name="Back" type="Button" parent="VBoxContainer"]
+margin_top = 439.0
+margin_right = 450.0
+margin_bottom = 507.0
+focus_mode = 0
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/normal = SubResource( 10 )
+custom_fonts/font = SubResource( 11 )
+text = "Main Menu"
+
+[node name="MusicPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 10 )
+autoplay = true
+bus = "Music"
+
+[node name="Pressed" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
+bus = "Sound"
+
+[connection signal="value_changed" from="VBoxContainer/MusicSlider" to="." method="_on_MusicSlider_value_changed"]
+[connection signal="gui_input" from="VBoxContainer/SoundsSlider" to="." method="_on_SoundsSlider_gui_input"]
+[connection signal="value_changed" from="VBoxContainer/SoundsSlider" to="." method="_on_SoundsSlider_value_changed"]
+[connection signal="toggled" from="VBoxContainer/Fullscreen" to="." method="_on_Fullscreen_toggled"]
+[connection signal="pressed" from="VBoxContainer/Back" to="." method="_on_Back_pressed"]
