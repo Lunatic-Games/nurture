@@ -77,4 +77,5 @@ anims/minishake = SubResource( 2 )
 layer = 4
 
 [node name="PauseMenu" parent="PauseMenuOverlay" instance=ExtResource( 3 )]
+
 [connection signal="timeout" from="DayNightOverlay/DayTimer" to="DayNightOverlay/DayTimer" method="_on_DayTimer_timeout"]

@@ -27,6 +27,9 @@ onready var held_plant
 
 func _physics_process(delta):
 	
+	# Process dev buttons
+	process_dev_buttons()
+	
 	# Used to perform raycasts
 	var space_state = get_world_2d().direct_space_state
 	
@@ -49,6 +52,11 @@ func _physics_process(delta):
 func _ready():
 	position = world_bounds_center
 	#gain_seed(test_seed)
+
+
+func process_dev_buttons():
+	if (Input.is_action_just_pressed("dev_pass_day")):
+		$DayNightOverlay/DayTimer.start(0.1)
 
 func handle_mouse_input(space_state):
 	if (Input.is_action_just_released("select")):

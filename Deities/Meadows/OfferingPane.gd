@@ -1,9 +1,8 @@
 extends Sprite
 
 
-export (Array, Resource) var offerings
-export (Array, Resource) var rewards
-
+onready var offerings = get_parent().offerings
+onready var rewards = get_parent().rewards
 onready var offerings_completed = 0
 onready var player_inventory = get_tree().get_nodes_in_group('player_inventory')[0]
 
@@ -20,17 +19,12 @@ func set_current_offering():
 		print("Appeased the deity")
 
 
+
 func handle_plant(offering):
 	
 	# The offering is correct
 	if is_plant_offering(offering):
-		offerings_completed += 1
-		visible = false
-		
-		# Play acknowledging sound (Bell chiming??)
-		
-		# Drop a reward if applicable
-		
+		complete_offering(offering)
 		set_current_offering()
 	
 	# Offering was not correct
@@ -40,6 +34,20 @@ func handle_plant(offering):
 		
 		# Add item back to player inventory
 		player_inventory.gain_plant(offering)
+
+
+
+# Handles completion of an offering
+func complete_offering(offering):
+		offerings_completed += 1
+		print("Completed offering")
+		
+		# Play acknowledging sound (Bell chiming??)
+		
+		# Drop a reward if applicable
+		if (offerings.size() > offerings_completed && offerings[offerings_completed]):
+			var reward = offerings[offerings_completed]
+			player_inventory.gain_seed(reward)
 
 
 

@@ -15,6 +15,7 @@ var MAX_OFFERING_TIME = 2
 onready var offerings_completed = 0
 onready var appearance_timer = $AppearanceTimer
 onready var offering_timer = $OfferingTimer
+onready var offering_pane = $OfferingPane
 onready var tween = $Tween
 onready var stag_animator = $StagAnimator
 onready var display_offering = false
@@ -35,47 +36,7 @@ func _ready():
 	var appearance_time = rng.randf_range(MIN_APPEARANCE_TIME, MAX_APPEARANCE_TIME)
 	appearance_timer.start(appearance_time * TIME_MULTIPLIER)
 	
-	set_current_offering()
-
-
-
-# TODO Add offering resource and use it instead of plant resource
-func set_current_offering():
-	$OfferingPane/Offering.texture = offerings[offerings_completed].plant_sprite
-
-
-func handle_plant(offering):
-	
-	print("HANDLING OFFERING")
-	
-	# The offering is correct
-	if is_plant_offering(offering):
-		offerings_completed += 1
-		print("Completed offering")
-		
-		# Play acknowledging sound (Bell chiming??)
-		
-		# Drop a reward if applicable
-		
-		set_current_offering()
-	
-	# Offering was not correct
-	else:
-		print("Offering was wrong")
-		
-		# Play grunt sound
-		
-		# Add item back to player inventory
-		player_inventory.gain_plant(offering)
-
-
-
-# Returns true if the offering is correct
-func is_plant_offering(offering):
-	if (offering == offerings[offerings_completed]):
-		return true
-	return false
-
+	offering_pane.set_current_offering()
 
 
 # Moves the deity into the world space
