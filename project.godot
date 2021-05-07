@@ -26,8 +26,8 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Garden Madness"
-run/main_scene="res://menus/main_menu/main_menu.tscn"
+config/name="Nurture"
+run/main_scene="res://levels/level_1.tscn"
 config/icon="res://icon.png"
 
 [display]

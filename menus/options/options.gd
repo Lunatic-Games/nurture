@@ -1,11 +1,12 @@
 extends Control
+
 onready var SLIDER_MAX_VAL = 100
 onready var menu = load("res://menus/main_menu/main_menu.tscn")
 onready var pressed_audio = get_node("Pressed")
 onready var music_slider = get_node("VBoxContainer/MusicSlider")
 onready var sound_slider = get_node("VBoxContainer/SoundsSlider")
-onready var fullscreen_check = get_node("VBoxContainer/Fullscreen")
-onready var menu_slide_animator = get_node("Panel/MenuSlideIn")
+onready var fullscreen_check = get_node("VBoxContainer/CenterContainer/Fullscreen")
+onready var menu_slide_animator = get_node("Overlay/MenuSlideIn")
 
 func _ready():
 	# Set the sliders to the correct position

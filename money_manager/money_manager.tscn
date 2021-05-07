@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Yagitudeh.otf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/fonts/Yagitudeh.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://money_manager/money_manager.gd" type="Script" id=2]
 [ext_resource path="res://assets/gold.png" type="Texture" id=3]
 
