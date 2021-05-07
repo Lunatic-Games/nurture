@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://diggable_areas/dig_particle.tres" type="Material" id=1]
+[ext_resource path="res://diggable_areas/dig_particle.gd" type="Script" id=2]
+[ext_resource path="res://diggable_areas/dig_particle.png" type="Texture" id=3]
+
+[node name="DigParticle" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Particles2D" type="Particles2D" parent="."]
+amount = 25
+lifetime = 4.0
+speed_scale = 3.0
+explosiveness = 0.93
+randomness = 0.34
+process_material = ExtResource( 1 )
+texture = ExtResource( 3 )

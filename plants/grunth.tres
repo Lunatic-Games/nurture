@@ -1,0 +1,30 @@
+[gd_resource type="Resource" load_steps=5 format=2]
+
+[ext_resource path="res://plants/bunt.tres" type="Resource" id=1]
+[ext_resource path="res://plants/PLANT.gd" type="Script" id=2]
+[ext_resource path="res://assets/plants/grunth/grunth_grown.png" type="Texture" id=3]
+[ext_resource path="res://assets/plants/grunth/grunth_seed.png" type="Texture" id=4]
+
+[resource]
+script = ExtResource( 2 )
+plant_name = "Grunth"
+plant_sprite = ExtResource( 3 )
+seed_sprite = ExtResource( 4 )
+other_drops = [ ExtResource( 1 ) ]
+rare_drops = [  ]
+others_drop_chance = 1.0
+max_others_dropped = 2
+drops_seed = false
+max_own_seeds_dropped = 1
+min_own_seeds_dropped = 1
+seed_drop_chance = 0.0
+growing_time = 4
+clicks_to_harvest = 2
+downtime = 6.0
+score = 350.0
+gold_dropped = 1
+essence_dropped = 0
+nurture_threshold = 2
+nurture_multiplier = 1.2
+rare_seeds_dropped_if_nurtured = 0
+rare_seed_drop_chance = 0.0

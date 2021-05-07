@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/epiphany_ranch.wav-4f01c911c70ec7d056e062e6b5a72c33.sample"
+
+[deps]
+
+source_file="res://assets/music/epiphany_ranch.wav"
+dest_files=[ "res://.import/epiphany_ranch.wav-4f01c911c70ec7d056e062e6b5a72c33.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0

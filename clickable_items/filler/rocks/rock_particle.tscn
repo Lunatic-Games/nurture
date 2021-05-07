@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://clickable_items/filler/rocks/rock_particle.tres" type="Material" id=1]
+[ext_resource path="res://assets/filler/rocks/rock_particle.png" type="Texture" id=2]
+[ext_resource path="res://clickable_items/filler/rocks/rock_particle.gd" type="Script" id=3]
+
+[node name="RockParticle" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Particles2D" type="Particles2D" parent="."]
+emitting = false
+amount = 4
+lifetime = 2.5
+one_shot = true
+explosiveness = 0.95
+randomness = 0.31
+process_material = ExtResource( 1 )
+texture = ExtResource( 2 )
