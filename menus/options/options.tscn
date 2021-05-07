@@ -2,15 +2,15 @@
 
 [ext_resource path="res://menus/options/options.gd" type="Script" id=1]
 [ext_resource path="res://Yagitudeh.otf" type="DynamicFontData" id=2]
-[ext_resource path="res://UI_Button_1.png" type="Texture" id=3]
+[ext_resource path="res://assets/ui/UI_Button_1.png" type="Texture" id=3]
 [ext_resource path="res://assets/music/plant_happy.wav" type="AudioStream" id=4]
-[ext_resource path="res://grabber_cablit.png" type="Texture" id=5]
-[ext_resource path="res://checkbox_unchecked.png" type="Texture" id=6]
-[ext_resource path="res://checkbox_checked.png" type="Texture" id=7]
-[ext_resource path="res://UI_Button_Down.png" type="Texture" id=8]
-[ext_resource path="res://grabber_cablit_hovered.png" type="Texture" id=9]
+[ext_resource path="res://assets/ui/grabber_cablit.png" type="Texture" id=5]
+[ext_resource path="res://assets/ui/checkbox_unchecked.png" type="Texture" id=6]
+[ext_resource path="res://assets/ui/checkbox_checked.png" type="Texture" id=7]
+[ext_resource path="res://assets/ui/UI_Button_Down.png" type="Texture" id=8]
+[ext_resource path="res://assets/ui/grabber_cablit_hovered.png" type="Texture" id=9]
 [ext_resource path="res://assets/music/epiphany_ranch.wav" type="AudioStream" id=10]
-[ext_resource path="res://UI_Button_Hovered.png" type="Texture" id=11]
+[ext_resource path="res://assets/ui/UI_Button_Hovered.png" type="Texture" id=11]
 
 [sub_resource type="StreamTexture" id=1]
 flags = 4

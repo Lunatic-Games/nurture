@@ -7,8 +7,9 @@
 [ext_resource path="res://plants/grunth.tres" type="Resource" id=5]
 [ext_resource path="res://deities/meadows/offering_pane.gd" type="Script" id=6]
 [ext_resource path="res://deities/meadows/meadows_deity.gd" type="Script" id=7]
-[ext_resource path="res://assets/deities/stag_sheet.png" type="Texture" id=8]
-[ext_resource path="res://deities/meadows/meadows_offering_v2.png" type="Texture" id=9]
+[ext_resource path="res://assets/deities/meadow/stag_sheet.png" type="Texture" id=8]
+[ext_resource path="res://assets/deities/meadow/meadows_offering.png" type="Texture" id=9]
+
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 39.428, 35.6272 )

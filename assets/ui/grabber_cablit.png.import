@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/UI_Button_1.png-8671136becc496acd0af02468577cff3.stex"
+path="res://.import/grabber_cablit.png-cd96df134c10434af80ce69738534879.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI_Button_1.png"
-dest_files=[ "res://.import/UI_Button_1.png-8671136becc496acd0af02468577cff3.stex" ]
+source_file="res://assets/ui/grabber_cablit.png"
+dest_files=[ "res://.import/grabber_cablit.png-cd96df134c10434af80ce69738534879.stex" ]
 
 [params]
 

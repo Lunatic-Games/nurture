@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/checkbox_checked.png-7a3c11ad7d07de2d2e66a6eb7eca103b.stex"
+path="res://.import/grabber_cablit_hovered.png-24f5ee0ff0a784f110c6dc0f722ec4db.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://checkbox_checked.png"
-dest_files=[ "res://.import/checkbox_checked.png-7a3c11ad7d07de2d2e66a6eb7eca103b.stex" ]
+source_file="res://assets/ui/grabber_cablit_hovered.png"
+dest_files=[ "res://.import/grabber_cablit_hovered.png-24f5ee0ff0a784f110c6dc0f722ec4db.stex" ]
 
 [params]
 

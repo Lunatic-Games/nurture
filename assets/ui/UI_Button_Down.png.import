@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/produce_box.png-c99ace667d0da046e3b18a72b7a495d9.stex"
+path="res://.import/UI_Button_Down.png-475a3000c05a63002636fc0a5fd10ba4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/produce_box.png"
-dest_files=[ "res://.import/produce_box.png-c99ace667d0da046e3b18a72b7a495d9.stex" ]
+source_file="res://assets/ui/UI_Button_Down.png"
+dest_files=[ "res://.import/UI_Button_Down.png-475a3000c05a63002636fc0a5fd10ba4.stex" ]
 
 [params]
 

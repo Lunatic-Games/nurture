@@ -7,7 +7,7 @@ onready var pause_menu = get_node("PausedButtons")
 onready var options_menu = get_node("OptionsSettings")
 onready var audio_player = get_node("OptionsSettings/SoundsSettings/SoundPlayer")
 
-onready var menu_scene = load("res://TestScene/Menu.tscn")
+onready var menu_scene = load("res://menus/main_menu/main_menu.tscn")
 
 func _ready():
 	var music_slider = $OptionsSettings/MusicSettings/MusicSlider

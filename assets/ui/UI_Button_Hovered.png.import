@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/grabber_cablit_hovered.png-7d0deab7922a29eb5d7aaf061a8d3ce5.stex"
+path="res://.import/UI_Button_Hovered.png-b62ad5aab30cbc0f1681fc090c3d6bb0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://grabber_cablit_hovered.png"
-dest_files=[ "res://.import/grabber_cablit_hovered.png-7d0deab7922a29eb5d7aaf061a8d3ce5.stex" ]
+source_file="res://assets/ui/UI_Button_Hovered.png"
+dest_files=[ "res://.import/UI_Button_Hovered.png-b62ad5aab30cbc0f1681fc090c3d6bb0.stex" ]
 
 [params]
 

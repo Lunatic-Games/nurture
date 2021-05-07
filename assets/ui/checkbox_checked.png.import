@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/UI_Button_Hovered.png-1512410b5d02310bede23a9e3448007c.stex"
+path="res://.import/checkbox_checked.png-4b0f2ac653860594478035952db4dda4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI_Button_Hovered.png"
-dest_files=[ "res://.import/UI_Button_Hovered.png-1512410b5d02310bede23a9e3448007c.stex" ]
+source_file="res://assets/ui/checkbox_checked.png"
+dest_files=[ "res://.import/checkbox_checked.png-4b0f2ac653860594478035952db4dda4.stex" ]
 
 [params]
 

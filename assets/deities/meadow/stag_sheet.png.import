@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/stag_sheet.png-b63f56b7f59c3e78958e6238bb8d5de8.stex"
+path="res://.import/stag_sheet.png-05970862e5d7e811239dc7e6da77afcf.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/deities/stag_sheet.png"
-dest_files=[ "res://.import/stag_sheet.png-b63f56b7f59c3e78958e6238bb8d5de8.stex" ]
+source_file="res://assets/deities/meadow/stag_sheet.png"
+dest_files=[ "res://.import/stag_sheet.png-05970862e5d7e811239dc7e6da77afcf.stex" ]
 
 [params]
 

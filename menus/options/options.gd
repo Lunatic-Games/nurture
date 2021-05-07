@@ -1,6 +1,6 @@
 extends Control
 onready var SLIDER_MAX_VAL = 100
-onready var menu = load("res://TestScene/Menu.tscn")
+onready var menu = load("res://menus/main_menu/main_menu.tscn")
 onready var pressed_audio = get_node("Pressed")
 onready var music_slider = get_node("VBoxContainer/MusicSlider")
 onready var sound_slider = get_node("VBoxContainer/SoundsSlider")

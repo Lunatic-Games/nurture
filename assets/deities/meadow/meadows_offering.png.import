@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/meadows_offering.png-57ce760b3a5e05b90382fba6198fb2db.stex"
+path="res://.import/meadows_offering.png-515bf9b048628e76616d732486a280d1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://deities/meadows/meadows_offering.png"
-dest_files=[ "res://.import/meadows_offering.png-57ce760b3a5e05b90382fba6198fb2db.stex" ]
+source_file="res://assets/deities/meadow/meadows_offering.png"
+dest_files=[ "res://.import/meadows_offering.png-515bf9b048628e76616d732486a280d1.stex" ]
 
 [params]
 
