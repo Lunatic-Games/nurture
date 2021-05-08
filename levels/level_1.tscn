@@ -116,7 +116,7 @@ position = Vector2( 288, -32 )
 
 [node name="PlayerController" parent="." instance=ExtResource( 3 )]
 
-[node name="CanvasLayer" parent="." instance=ExtResource( 9 )]
+[node name="GoalControllerLayer" parent="." instance=ExtResource( 9 )]
 
 [node name="MoneyManager" parent="." instance=ExtResource( 12 )]
 

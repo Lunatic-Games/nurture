@@ -8,7 +8,9 @@ onready var goal_card = preload("res://goal_controller/goal_card.tscn")
 onready var half_spacer = preload("res://goal_controller/half_spacer.tscn")
 onready var spacer = preload("res://goal_controller/spacer.tscn")
 onready var menu = load("res://menus/main_menu/main_menu.tscn")
-onready var popup_grid = get_node("Popup/PopupGrid/GridContainer")
+
+onready var popup = get_node("Popup")
+onready var goal_container = get_node("Popup/GoalContainer")
 onready var popup_animator = get_node("Popup/AnimationPlayer")
 
 onready var is_collapsed = true
@@ -23,7 +25,10 @@ func _process(_delta):
 func _on_Area2D_input_event(_viewport, event, _shape_idx):
 	if (event is InputEventMouseButton && event.button_index == BUTTON_LEFT && event.pressed):
 		# bring in the box
-		popup_goals()
+		if is_collapsed:
+			popup_goals()
+		else:
+			collapse_goals()
 
 
 func populate_goals():
@@ -43,17 +48,17 @@ func populate_goals():
 			if (goals.size()%3 >= 2):
 				# Two cards exist, final row needs a half spacer
 				card = half_spacer.instance()
-				popup_grid.add_child(card)
+				goal_container.add_child(card)
 				
 			elif (goals.size()%3 >= 1):
 				# One card exists, final row needs a spacer
 				card = spacer.instance()
-				popup_grid.add_child(card)
+				goal_container.add_child(card)
 		
 		card = goal_card.instance()
 		card.get_node("Button/Sprite").texture = goal[0]
 		card.get_node("Button/RichTextLabel").text = "x" + String(goal[1])
-		popup_grid.add_child(card)
+		goal_container.add_child(card)
 		goal_tally.append(0)
 
 
@@ -90,9 +95,9 @@ func check_for_goal(plant):
 
 
 func game_over():
-	popup_grid.get_parent().get_node("HideGoals").visible = false
-	popup_grid.get_parent().get_node("Menu").visible = true
-	popup_grid.get_parent().get_node("NextLevel").visible = true
+	popup.get_node("HideGoals").visible = false
+	popup.get_node("Menu").visible = true
+	popup.get_node("NextLevel").visible = true
 	popup_goals()
 
 

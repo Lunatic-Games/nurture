@@ -5,7 +5,7 @@ export (Array) var level_goals
 export (PackedScene) var next_level
 export (Array, Resource) var starting_seeds
 
-onready var goal_controller = get_node("CanvasLayer").get_node("GoalController")
+onready var goal_controller = get_node("GoalControllerLayer/GoalController")
 onready var inventory = get_tree().get_nodes_in_group("player_inventory")[0]
 
 func _ready():

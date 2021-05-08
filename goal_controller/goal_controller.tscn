@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/fonts/Yagitudeh.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://goal_controller/goal_controller.gd" type="Script" id=2]
@@ -8,49 +8,45 @@
 size = 32
 font_data = ExtResource( 1 )
 
-[sub_resource type="Animation" id=2]
-resource_name = "collapse"
-length = 0.6
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:rect_position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.6 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 445, 12 ), Vector2( 445, -300 ) ]
-}
-
-[sub_resource type="Animation" id=3]
-length = 0.6
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:rect_position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.6 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 445, -300 ), Vector2( 445, 12 ) ]
-}
-
-[sub_resource type="DynamicFont" id=4]
-size = 32
-font_data = ExtResource( 1 )
-
 [sub_resource type="DynamicFont" id=5]
 size = 32
 font_data = ExtResource( 1 )
 
+[sub_resource type="Animation" id=2]
+resource_name = "collapse"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"update": 3,
+"values": [ Vector2( 1024, 20 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"update": 3,
+"values": [ Vector2( 920, 20 ) ]
+}
+
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 27.3961, 26.5851 )
 
-[node name="CanvasLayer" type="CanvasLayer"]
+[node name="GoalControllerLayer" type="CanvasLayer"]
 pause_mode = 2
 
 [node name="GoalController" type="Node2D" parent="." groups=[
@@ -73,66 +69,52 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Popup" type="Control" parent="GoalController"]
-margin_left = 445.0
-margin_top = 12.0
-margin_right = 485.0
-margin_bottom = 52.0
+[node name="Popup" type="VBoxContainer" parent="GoalController"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 1024.0
+margin_top = 20.0
+margin_right = 1272.0
+margin_bottom = 196.0
+mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="GoalController/Popup"]
-anims/collapse = SubResource( 2 )
-anims/pop_in = SubResource( 3 )
-
-[node name="PopupGrid" type="GridContainer" parent="GoalController/Popup"]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -82.0
-margin_right = 166.0
-margin_bottom = 176.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="GridContainer" type="GridContainer" parent="GoalController/Popup/PopupGrid"]
+[node name="GoalContainer" type="GridContainer" parent="GoalController/Popup"]
 margin_right = 248.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 248, 64 )
-columns = 3
+mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HideGoals" type="Button" parent="GoalController/Popup/PopupGrid"]
+[node name="NextLevel" type="Button" parent="GoalController/Popup"]
+visible = false
 margin_top = 68.0
 margin_right = 248.0
-margin_bottom = 132.0
-rect_min_size = Vector2( 64, 64 )
-rect_pivot_offset = Vector2( 82.5, 0 )
-size_flags_horizontal = 7
-custom_fonts/font = SubResource( 4 )
-text = "Hide Goals"
+margin_bottom = 108.0
+custom_fonts/font = SubResource( 5 )
+text = "Next"
+align = 0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Menu" type="Button" parent="GoalController/Popup/PopupGrid"]
+[node name="Menu" type="Button" parent="GoalController/Popup"]
 visible = false
-margin_top = 136.0
+margin_top = 68.0
 margin_right = 248.0
-margin_bottom = 176.0
+margin_bottom = 108.0
 custom_fonts/font = SubResource( 5 )
-text = "Back To Menu"
+text = "Menu"
+align = 0
 
-[node name="NextLevel" type="Button" parent="GoalController/Popup/PopupGrid"]
-visible = false
-margin_top = 180.0
-margin_right = 248.0
-margin_bottom = 220.0
-custom_fonts/font = SubResource( 5 )
-text = "Next Level"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GoalController/Popup"]
+autoplay = "collapse"
+anims/collapse = SubResource( 2 )
+anims/pop_in = SubResource( 3 )
 
 [node name="GoalSprite" type="Sprite" parent="GoalController"]
 position = Vector2( 984, 37.5 )
@@ -143,7 +125,6 @@ texture = ExtResource( 3 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GoalController/GoalSprite/Area2D"]
 shape = SubResource( 6 )
 
-[connection signal="pressed" from="GoalController/Popup/PopupGrid/HideGoals" to="GoalController" method="_on_HideGoals_pressed"]
-[connection signal="pressed" from="GoalController/Popup/PopupGrid/Menu" to="GoalController" method="_on_Menu_pressed"]
-[connection signal="pressed" from="GoalController/Popup/PopupGrid/NextLevel" to="GoalController" method="_on_NextLevel_pressed"]
+[connection signal="pressed" from="GoalController/Popup/NextLevel" to="GoalController" method="_on_NextLevel_pressed"]
+[connection signal="pressed" from="GoalController/Popup/Menu" to="GoalController" method="_on_Menu_pressed"]
 [connection signal="input_event" from="GoalController/GoalSprite/Area2D" to="GoalController" method="_on_Area2D_input_event"]
