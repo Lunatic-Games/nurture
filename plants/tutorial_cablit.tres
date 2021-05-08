@@ -4,7 +4,6 @@
 [ext_resource path="res://plants/PLANT.gd" type="Script" id=3]
 
 [sub_resource type="StreamTexture" id=1]
-load_path = "res://.import/cablit_grown.png-a1e01e98c81a5ce6300b8f0c42e6fb56.stex"
 
 [resource]
 script = ExtResource( 3 )
