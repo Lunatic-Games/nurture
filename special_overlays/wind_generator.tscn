@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://special_overlays/wind_generator.gd" type="Script" id=1]
+[ext_resource path="res://special_overlays/wind.tscn" type="PackedScene" id=2]
+
+[node name="WindGenerator" type="Node2D"]
+script = ExtResource( 1 )
+extents = Vector2( 600, 400 )
+
+[node name="Wind" parent="." instance=ExtResource( 2 )]
+position = Vector2( -492.612, 157.728 )
+
+[node name="Wind2" parent="." instance=ExtResource( 2 )]
+position = Vector2( -452.146, -133.277 )
+
+[node name="Wind3" parent="." instance=ExtResource( 2 )]
+position = Vector2( -959.992, 18.8238 )
+
+[node name="Wind4" parent="." instance=ExtResource( 2 )]
+position = Vector2( -66.6581, 314.086 )

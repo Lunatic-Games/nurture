@@ -40,7 +40,7 @@ func multi_interpolate(line, time):
 	
 	if (point_count <= 2):
 		var curr_point = line.get_point_position(0)
-		var next_point = line.get_point_position(1)
+		var _next_point = line.get_point_position(1)
 		return curr_point.linear_interpolate
 	
 	# iterate through all but the last point

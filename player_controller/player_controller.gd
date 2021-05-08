@@ -24,7 +24,6 @@ onready var held_seed
 onready var held_plant
 
 
-
 func _physics_process(delta):
 	
 	# Process dev buttons

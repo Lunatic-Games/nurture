@@ -15,11 +15,9 @@ onready var is_collapsed = true
 onready var goal_tally = []
 
 
-func _process(delta):
-	
+func _process(_delta):
 	if (Input.is_action_just_pressed("dev_button")):
 		game_over()
-
 
 
 func _on_Area2D_input_event(_viewport, event, _shape_idx):
