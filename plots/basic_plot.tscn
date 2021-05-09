@@ -83,7 +83,6 @@ tracks/0/keys = {
 ]]
 script = ExtResource( 3 )
 fissle = ExtResource( 5 )
-chance_for_fissle = 0.05
 
 [node name="LoveParticle" parent="." instance=ExtResource( 1 )]
 

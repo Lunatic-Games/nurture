@@ -48,6 +48,13 @@ func complete_offering(offering):
 		if (offerings.size() > offerings_completed && offerings[offerings_completed]):
 			var reward = offerings[offerings_completed]
 			player_inventory.gain_seed(reward)
+		
+		# Hide the offering panel
+		get_parent().hide_offering_panel()
+		# Wait for 1.5 seconds
+		yield(get_tree().create_timer(1.5), "timeout")
+		# Leave the world space
+		get_parent().leave_world_space()
 
 
 

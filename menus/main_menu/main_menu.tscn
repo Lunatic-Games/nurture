@@ -7,7 +7,6 @@
 [ext_resource path="res://assets/art/background.png" type="Texture" id=5]
 [ext_resource path="res://menus/main_menu/main_menu.gd" type="Script" id=6]
 
-
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.25098, 0.0470588, 0.223529, 0.290196 )
 

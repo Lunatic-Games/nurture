@@ -8,8 +8,8 @@ export (Array, Resource) var rewards
 var TIME_MULTIPLIER = 1
 var MIN_APPEARANCE_TIME = 5
 var MAX_APPEARANCE_TIME = 8
-var MIN_OFFERING_TIME = 1
-var MAX_OFFERING_TIME = 2
+var MIN_OFFERING_TIME = 100
+var MAX_OFFERING_TIME = 200
 
 
 onready var offerings_completed = 0
@@ -111,12 +111,18 @@ func _on_VisibilityNotifier2D_screen_exited():
 # No offer was given in time, leave
 func _on_OfferingTimer_timeout():
 	
-	# Offering failed
-	display_offering = false
-	$OfferingPane.visible = false
+	# Hide the offering panel
+	hide_offering_panel()
 	
 	# Leave
 	leave_world_space()
+
+
+
+func hide_offering_panel():
+	# Offering failed
+	display_offering = false
+	$OfferingPane.visible = false
 
 
 
@@ -133,7 +139,8 @@ func _on_Tween_tween_completed(object, key):
 		display_offering_ui()
 		# Wait 6 seconds, then resume execution.
 		yield(get_tree().create_timer(6.0), "timeout")
-		stag_animator.play("ear_flick")
+		if (in_world):
+			stag_animator.play("ear_flick")
 	else:
 		
 		# Set the time until the deity appears again
