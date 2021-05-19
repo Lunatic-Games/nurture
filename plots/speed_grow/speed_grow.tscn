@@ -1,11 +1,10 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://plots/particles/love_particle.tscn" type="PackedScene" id=1]
 [ext_resource path="res://hover_text/hover_text.tscn" type="PackedScene" id=2]
-[ext_resource path="res://plots/basic_blot.gd" type="Script" id=3]
+[ext_resource path="res://plots/basic_plot/basic_blot.gd" type="Script" id=3]
 [ext_resource path="res://assets/music/plant_happy.wav" type="AudioStream" id=4]
-[ext_resource path="res://plants/fissle.tres" type="Resource" id=5]
-[ext_resource path="res://plots/basic_plot.png" type="Texture" id=6]
+[ext_resource path="res://plots/basic_plot/basic_plot.png" type="Texture" id=6]
 [ext_resource path="res://assets/particles/angry_particle.png" type="Texture" id=7]
 [ext_resource path="res://assets/particles/water_particle.png" type="Texture" id=8]
 [ext_resource path="res://assets/music/plant_angry.wav" type="AudioStream" id=9]
@@ -76,14 +75,12 @@ tracks/0/keys = {
 "values": [ Vector2( 1.1, 1.1 ), Vector2( 1, 1 ) ]
 }
 
-[node name="BasicPlot" type="Node2D" groups=[
+[node name="SpeedGrow" type="Node2D" groups=[
 "money_maker",
 "new_day",
 "plot",
 ]]
 script = ExtResource( 3 )
-fissle = ExtResource( 5 )
-chance_for_fissle = 0.05
 
 [node name="LoveParticle" parent="." instance=ExtResource( 1 )]
 
@@ -109,6 +106,7 @@ collision_layer = 2
 shape = SubResource( 1 )
 
 [node name="PlotSprite" type="Sprite" parent="."]
+modulate = Color( 0, 0, 0, 1 )
 z_index = -1
 texture = ExtResource( 6 )
 
@@ -135,7 +133,10 @@ bus = "Sound"
 stream = ExtResource( 4 )
 bus = "Sound"
 
+[node name="GrowTimer" type="Timer" parent="."]
+
 [connection signal="input_event" from="Area2D" to="." method="_on_Area2D_input_event"]
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_Area2D_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_Area2D_mouse_exited"]
 [connection signal="timeout" from="PlantDowntime" to="." method="_on_PlantDowntime_timeout"]
+[connection signal="timeout" from="GrowTimer" to="." method="_on_GrowTimer_timeout"]

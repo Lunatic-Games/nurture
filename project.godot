@@ -10,6 +10,11 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Resource",
+"class": "event",
+"language": "GDScript",
+"path": "res://event_handling/events/EVENT.gd"
+}, {
+"base": "Resource",
 "class": "plant",
 "language": "GDScript",
 "path": "res://plants/PLANT.gd"
@@ -20,6 +25,7 @@ _global_script_classes=[ {
 "path": "res://plant_seeds/PLANT_SEED.gd"
 } ]
 _global_script_class_icons={
+"event": "",
 "plant": "",
 "plant_seed": ""
 }
@@ -29,6 +35,10 @@ _global_script_class_icons={
 config/name="Nurture"
 run/main_scene="res://levels/level_1.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+Util="*res://assets/utility_script/util.gd"
 
 [display]
 

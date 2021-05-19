@@ -4,12 +4,13 @@
 [ext_resource path="res://player_controller/player_controller.tscn" type="PackedScene" id=2]
 [ext_resource path="res://forest_tilemap.tres" type="TileSet" id=3]
 [ext_resource path="res://assets/plants/ice_melon/ice_melon_grown.png" type="Texture" id=4]
-[ext_resource path="res://plots/basic_plot.tscn" type="PackedScene" id=5]
+[ext_resource path="res://plots/basic_plot/basic_plot.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/plants/grunth/grunth_grown.png" type="Texture" id=6]
 [ext_resource path="res://goal_controller/goal_controller.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/music/para_beat_01.wav" type="AudioStream" id=8]
 [ext_resource path="res://levels/level.gd" type="Script" id=9]
 [ext_resource path="res://levels/level_3.tscn" type="PackedScene" id=10]
+
 
 [node name="Level2" type="Node2D"]
 script = ExtResource( 9 )

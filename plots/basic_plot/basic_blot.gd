@@ -1,7 +1,9 @@
 extends Node2D
 
 export (Resource) var fissle
-export (float) var chance_for_fissle
+export (float) var chance_for_fissle = 0
+export (float) var GROWTH_LENGTH = 15
+export (int) var money_bonus = 0
 
 onready var adj_plots
 onready var current_plant
@@ -24,6 +26,7 @@ onready var love_emitter = get_node("LoveParticle")
 onready var angry_emitter = get_node("AngryParticle")
 onready var water_emitter = get_node("WaterParticle")
 onready var hover_text = get_node("HoverText")
+onready var grow_timer = get_node("GrowTimer")
 
 onready var seed_drop = preload("res://drops/seed_drops/seed_drop.tscn")
 
@@ -54,6 +57,9 @@ func sow(plant_seed):
 	# Show the plant
 	display_plant()
 	enable_tooltip()
+	
+	# Start the growth timer
+	grow_timer.start(GROWTH_LENGTH)
 
 
 
@@ -65,7 +71,7 @@ func display_plant():
 
 
 
-func new_day():
+func grow_plant():
 	
 	# if a plant is planted
 	if (current_plant):
@@ -228,7 +234,7 @@ func nurture_plant():
 
 func gain_coins():
 	# Caught by the money manager
-	emit_signal("gain_coins", current_plant.gold_dropped)
+	emit_signal("gain_coins", current_plant.gold_dropped + money_bonus)
 
 
 func empty_plot():
@@ -264,3 +270,7 @@ func _on_PlantDowntime_timeout():
 	water_emitter.emitting = true
 	plant_downtimer.start(current_plant.downtime)
 	is_plant_on_cooldown = false
+
+
+func _on_GrowTimer_timeout():
+	grow_plant()
