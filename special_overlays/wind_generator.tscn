@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://special_overlays/wind_generator.gd" type="Script" id=1]
+
+[node name="WindGenerator" type="Node2D"]
+script = ExtResource( 1 )
+extents = Vector2( 600, 400 )

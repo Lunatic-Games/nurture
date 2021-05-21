@@ -15,5 +15,5 @@ func _physics_process(_delta):
 
 
 func _on_DayTimer_timeout():
-	get_tree().call_group('new_day', 'new_day')
+	# get_tree().call_group('new_day', 'new_day')
 	start(DAY_LENGTH)

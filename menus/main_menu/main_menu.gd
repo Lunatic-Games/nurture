@@ -1,8 +1,8 @@
 extends Control
 
 onready var options = preload("res://menus/options/options.tscn")
-onready var level_1 = preload("res://levels/level_1.tscn")
-onready var tutorial = preload("res://levels/tutorial.tscn")
+onready var level_1 = preload("res://expansions/default.tscn")
+onready var tutorial = preload("res://expansions/tutorial.tscn")
 
 
 func _on_Play_pressed():

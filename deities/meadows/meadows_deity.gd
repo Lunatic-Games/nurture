@@ -47,7 +47,6 @@ func enter_world_space():
 	var destination = destination_flag.global_position + get_spawn_offset()
 	
 	# Move to the destination
-	var tween = get_node("Tween")
 	tween.interpolate_property(self, "position",
 		global_position, destination, 5)
 	tween.start()
@@ -66,7 +65,7 @@ func leave_world_space():
 	var destination = home_flag.global_position + get_spawn_offset()
 	
 	# Move to the destination
-	var tween = get_node("Tween")
+	tween = get_node("Tween")
 	tween.interpolate_property(self, "position",
 		global_position, destination, 5)
 	tween.start()
@@ -121,7 +120,7 @@ func _on_OfferingTimer_timeout():
 
 
 # Deity arrived at destination
-func _on_Tween_tween_completed(object, key):
+func _on_Tween_tween_completed(_object, _key):
 	
 	if (in_world):
 		stag_animator.play("r_idle")

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://special_overlays/wind.gd" type="Script" id=1]
+
+[sub_resource type="Curve" id=1]
+_data = [ Vector2( 0, 0.0636363 ), 0.0, 0.0, 0, 0, Vector2( 0.527778, 0.381818 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.0636363 ), 0.0, 0.0, 0, 0 ]
+
+[node name="Wind" type="Line2D"]
+position = Vector2( -1.23792, 288.625 )
+points = PoolVector2Array( 0, 0 )
+width_curve = SubResource( 1 )
+default_color = Color( 1, 1, 1, 0.231373 )
+joint_mode = 2
+script = ExtResource( 1 )

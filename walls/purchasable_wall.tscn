@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://money_managers/price_display/price_display.tscn" type="PackedScene" id=1]
+[ext_resource path="res://walls/purchasable_wall.gd" type="Script" id=2]
+[ext_resource path="res://assets/events/buy_expansion.png" type="Texture" id=3]
+[ext_resource path="res://event_handling/event_manager/event_manager.tscn" type="PackedScene" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 10, 67.0281 )
+
+[node name="purchasable_wall" type="StaticBody2D"]
+script = ExtResource( 2 )
+
+[node name="EventManager" parent="." instance=ExtResource( 4 )]
+choices = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2( 1, 17.84 )
+shape = SubResource( 1 )
+
+[node name="PriceDisplay" parent="." instance=ExtResource( 1 )]
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+
+[connection signal="input_event" from="PriceDisplay/HoverChecker" to="." method="_on_HoverChecker_input_event"]
+
+[editable path="PriceDisplay"]

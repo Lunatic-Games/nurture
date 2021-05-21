@@ -3,7 +3,6 @@
 [ext_resource path="res://clickable_items/produce_box/produce_box.gd" type="Script" id=1]
 [ext_resource path="res://assets/clickable_items/produce_box.png" type="Texture" id=2]
 
-
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 26, 15 )
 

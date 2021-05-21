@@ -6,6 +6,7 @@ class_name plant
 export (String) var plant_name
 export (Texture) var plant_sprite
 export (Texture) var seed_sprite
+export (String) var plant_type = "plant"
 export (Array, Resource) var other_drops
 export (Array, Resource) var rare_drops
 
@@ -18,7 +19,6 @@ export (float) var seed_drop_chance
 export (int) var growing_time
 export (int) var clicks_to_harvest
 export (float) var downtime
-export (float) var score
 export (int) var gold_dropped = 1
 export (int) var essence_dropped = 0
 

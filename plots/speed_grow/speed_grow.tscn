@@ -1,0 +1,143 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://plots/particles/love_particle.tscn" type="PackedScene" id=1]
+[ext_resource path="res://hover_text/hover_text.tscn" type="PackedScene" id=2]
+[ext_resource path="res://plots/basic_plot/basic_blot.gd" type="Script" id=3]
+[ext_resource path="res://assets/music/plant_happy.wav" type="AudioStream" id=4]
+[ext_resource path="res://plots/basic_plot/basic_plot.png" type="Texture" id=6]
+[ext_resource path="res://assets/particles/angry_particle.png" type="Texture" id=7]
+[ext_resource path="res://assets/particles/water_particle.png" type="Texture" id=8]
+[ext_resource path="res://assets/music/plant_angry.wav" type="AudioStream" id=9]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 24.9112, 26.2539 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "growing"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -15.0, 15.0, -5.0, 5.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "idle"
+length = 1.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7, 1.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 1 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("PlotSprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.1, 1.1 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("PlotSprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1.1, 1.1 ), Vector2( 1, 1 ) ]
+}
+
+[node name="SpeedGrow" type="Node2D" groups=[
+"money_maker",
+"new_day",
+"plot",
+]]
+script = ExtResource( 3 )
+GROWTH_LENGTH = 5.0
+
+[node name="LoveParticle" parent="." instance=ExtResource( 1 )]
+
+[node name="AngryParticle" parent="." instance=ExtResource( 1 )]
+modulate = Color( 1, 1, 1, 1 )
+amount = 6
+lifetime = 0.6
+texture = ExtResource( 7 )
+
+[node name="WaterParticle" parent="." instance=ExtResource( 1 )]
+modulate = Color( 1, 1, 1, 1 )
+amount = 5
+lifetime = 0.6
+texture = ExtResource( 8 )
+
+[node name="HoverText" parent="." instance=ExtResource( 2 )]
+visible = false
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 1 )
+
+[node name="PlotSprite" type="Sprite" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+z_index = -1
+texture = ExtResource( 6 )
+
+[node name="PlantSprite" type="Sprite" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PlantSprite"]
+anims/growing = SubResource( 2 )
+
+[node name="Idling" type="AnimationPlayer" parent="PlantSprite"]
+anims/idle = SubResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/focused = SubResource( 4 )
+anims/unfocused = SubResource( 5 )
+
+[node name="PlantDowntime" type="Timer" parent="."]
+one_shot = true
+
+[node name="AngryNoise" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 9 )
+bus = "Sound"
+
+[node name="HappyNoise" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
+bus = "Sound"
+
+[node name="GrowTimer" type="Timer" parent="."]
+
+[connection signal="input_event" from="Area2D" to="." method="_on_Area2D_input_event"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_Area2D_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_Area2D_mouse_exited"]
+[connection signal="timeout" from="PlantDowntime" to="." method="_on_PlantDowntime_timeout"]
+[connection signal="timeout" from="GrowTimer" to="." method="_on_GrowTimer_timeout"]

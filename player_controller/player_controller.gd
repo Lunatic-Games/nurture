@@ -1,4 +1,7 @@
-extends Node2D
+extends KinematicBody2D
+
+const CAMERA_SPEED = 25
+const SEED_SIZE = 32
 
 # Preloads
 onready var base_seed = preload("res://plant_seeds/base_seed.tscn")
@@ -15,8 +18,7 @@ onready var world_bounds_center = Vector2(0,0)# Vector2(OS.window_size[0] / 2, O
 onready var world_bounds_min = world_bounds_center + Vector2(-600, -400)
 onready var world_bounds_max = world_bounds_center + Vector2(600, 400)
 
-onready var CAMERA_SPEED = 250
-onready var SEED_SIZE = 32
+
 onready var seed_dig_chance = 0.01
 onready var rng = RandomNumberGenerator.new()
 
@@ -24,12 +26,9 @@ onready var held_seed
 onready var held_plant
 
 
-
 func _physics_process(delta):
 	
-	# Process dev buttons
-	process_dev_buttons()
-	
+
 	# Used to perform raycasts
 	var space_state = get_world_2d().direct_space_state
 	
@@ -53,10 +52,6 @@ func _ready():
 	position = world_bounds_center
 	#gain_seed(test_seed)
 
-
-func process_dev_buttons():
-	if (Input.is_action_just_pressed("dev_pass_day")):
-		$DayNightOverlay/DayTimer.start(0.1)
 
 func handle_mouse_input(space_state):
 	if (Input.is_action_just_released("select")):
@@ -90,7 +85,7 @@ func handle_mouse_input(space_state):
 			#attempt_dig_for_seed(space_state)
 			pass
 
-func move_camera_by_input(delta):
+func move_camera_by_input(_delta):
 	var direction = Vector2(0,0)
 	
 	if (Input.is_action_pressed("down")):
@@ -105,11 +100,13 @@ func move_camera_by_input(delta):
 	if (Input.is_action_pressed("right")):
 		direction += Vector2(CAMERA_SPEED, 0)
 	
-	direction.normalized()
+	var val = move_and_collide(direction)
+	
+	#direction.normalized()
 	
 	# Move the controller, if it is in bounds
-	if (in_bounds(direction)):
-		position += delta*direction
+	#if (in_bounds(direction)):
+	#	position += delta*direction
 
 
 

@@ -1,17 +1,14 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://diggable_areas/dig_particle.tres" type="Material" id=1]
 [ext_resource path="res://player_controller/player_controller.gd" type="Script" id=2]
 [ext_resource path="res://diggable_areas/dig_particle.png" type="Texture" id=3]
 [ext_resource path="res://menus/pause_menu/pause_menu.tscn" type="PackedScene" id=4]
-[ext_resource path="res://player_controller/day_timer.gd" type="Script" id=5]
 [ext_resource path="res://player_controller/player_inventory/player_inventory.tscn" type="PackedScene" id=6]
 
-[sub_resource type="Curve" id=1]
-_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.1, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.620755, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.750943, 0 ), 0.0, 0.0, 0, 0 ]
+[sub_resource type="RectangleShape2D" id=1]
 
 [sub_resource type="Animation" id=2]
-resource_name = "minishake"
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("Camera2D:offset")
@@ -26,10 +23,13 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( -1, -1 ), Vector2( 1, 1 ), Vector2( -0.5, -0.5 ), Vector2( 0, 0 ) ]
 }
 
-[node name="PlayerController" type="Node2D" groups=[
+[node name="PlayerController" type="KinematicBody2D" groups=[
 "player",
 ]]
 script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
 
 [node name="Camera2D" type="Camera2D" parent="." groups=[
 "camera",
@@ -50,26 +50,6 @@ randomness = 0.1
 process_material = ExtResource( 1 )
 texture = ExtResource( 3 )
 
-[node name="DayNightOverlay" type="CanvasLayer" parent="."]
-layer = 2
-
-[node name="DayTimer" type="Timer" parent="DayNightOverlay"]
-wait_time = 15.0
-autostart = true
-script = ExtResource( 5 )
-day_color = Color( 0, 0, 0, 0 )
-night_color = Color( 0.0784314, 0.0235294, 0.172549, 0.588235 )
-color_ratio = SubResource( 1 )
-
-[node name="DayOverlay" type="ColorRect" parent="DayNightOverlay/DayTimer"]
-margin_right = 1024.0
-margin_bottom = 604.0
-mouse_filter = 2
-color = Color( 1, 1, 1, 0.964706 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="ScreenShake" type="AnimationPlayer" parent="."]
 anims/minishake = SubResource( 2 )
 
@@ -77,5 +57,4 @@ anims/minishake = SubResource( 2 )
 layer = 4
 
 [node name="PauseMenu" parent="PauseMenuOverlay" instance=ExtResource( 4 )]
-
-[connection signal="timeout" from="DayNightOverlay/DayTimer" to="DayNightOverlay/DayTimer" method="_on_DayTimer_timeout"]
+visible = false

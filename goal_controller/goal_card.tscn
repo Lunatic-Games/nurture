@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Yagitudeh.otf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/fonts/Yagitudeh.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/plants/cablit/cablit_grown.png" type="Texture" id=2]
 [ext_resource path="res://goal_controller/goal_card.gd" type="Script" id=3]
 
@@ -25,6 +25,7 @@ __meta__ = {
 [node name="Button" type="Button" parent="."]
 margin_right = 80.0
 margin_bottom = 64.0
+rect_min_size = Vector2( 120, 0 )
 disabled = true
 __meta__ = {
 "_edit_use_anchors_": false

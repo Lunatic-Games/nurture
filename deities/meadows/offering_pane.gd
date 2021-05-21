@@ -38,7 +38,7 @@ func handle_plant(offering):
 
 
 # Handles completion of an offering
-func complete_offering(offering):
+func complete_offering(_offering):
 		offerings_completed += 1
 		print("Completed offering")
 		

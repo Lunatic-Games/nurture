@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/filler/clouds/cloud_2.png" type="Texture" id=1]
+[ext_resource path="res://special_overlays/cloud_1.gd" type="Script" id=2]
+
+[node name="CloudV2" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )

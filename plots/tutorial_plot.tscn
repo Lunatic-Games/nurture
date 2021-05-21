@@ -3,11 +3,12 @@
 [ext_resource path="res://plots/particles/love_particle.tscn" type="PackedScene" id=1]
 [ext_resource path="res://hover_text/hover_text.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/music/plant_happy.wav" type="AudioStream" id=3]
-[ext_resource path="res://plots/basic_plot.png" type="Texture" id=4]
+[ext_resource path="res://plots/basic_plot/basic_plot.png" type="Texture" id=4]
 [ext_resource path="res://assets/particles/angry_particle.png" type="Texture" id=5]
 [ext_resource path="res://assets/particles/water_particle.png" type="Texture" id=6]
 [ext_resource path="res://assets/music/plant_angry.wav" type="AudioStream" id=7]
 [ext_resource path="res://plots/tutorial_plot.gd" type="Script" id=8]
+
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 24.9112, 26.2539 )

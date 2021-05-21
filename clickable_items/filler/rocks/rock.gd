@@ -5,7 +5,7 @@ onready var rock_particle = preload("res://clickable_items/filler/rocks/rock_par
 
 
 
-func _on_Area2D_input_event(viewport, event, shape_idx):
+func _on_Area2D_input_event(_viewport, event, _shape_idx):
 	if (event.is_pressed() and event.button_index == BUTTON_LEFT):
 		
 		# Create the particle

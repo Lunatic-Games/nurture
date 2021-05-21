@@ -10,6 +10,11 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Resource",
+"class": "event",
+"language": "GDScript",
+"path": "res://event_handling/events/EVENT.gd"
+}, {
+"base": "Resource",
 "class": "plant",
 "language": "GDScript",
 "path": "res://plants/PLANT.gd"
@@ -20,19 +25,27 @@ _global_script_classes=[ {
 "path": "res://plant_seeds/PLANT_SEED.gd"
 } ]
 _global_script_class_icons={
+"event": "",
 "plant": "",
 "plant_seed": ""
 }
 
 [application]
 
-config/name="Garden Madness"
-run/main_scene="res://menus/main_menu/main_menu.tscn"
+config/name="Nurture"
+run/main_scene="res://expansions/default.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+Util="*res://assets/utility_script/util.gd"
+AutoVars="*res://assets/utility_script/auto_vars.gd"
+DevKeys="*res://assets/utility_script/dev_keys.gd"
 
 [display]
 
-window/stretch/mode="viewport"
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
 
 [importer_defaults]
 
@@ -101,6 +114,11 @@ pause={
 dev_pass_day={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":80,"unicode":0,"echo":false,"script":null)
+ ]
+}
+dev_gain_coins={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777244,"unicode":0,"echo":false,"script":null)
  ]
 }
 

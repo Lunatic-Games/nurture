@@ -4,13 +4,13 @@
 [ext_resource path="res://plants/PLANT.gd" type="Script" id=3]
 
 [sub_resource type="StreamTexture" id=1]
-load_path = "res://.import/cablit_grown.png-a1e01e98c81a5ce6300b8f0c42e6fb56.stex"
 
 [resource]
 script = ExtResource( 3 )
 plant_name = "Cablit"
 plant_sprite = SubResource( 1 )
 seed_sprite = ExtResource( 1 )
+plant_type = "plant"
 other_drops = [  ]
 rare_drops = [  ]
 others_drop_chance = 0.0
@@ -22,7 +22,6 @@ seed_drop_chance = 0.0
 growing_time = 3
 clicks_to_harvest = 2
 downtime = 4.0
-score = 25.0
 gold_dropped = 1
 essence_dropped = 0
 nurture_threshold = 3
