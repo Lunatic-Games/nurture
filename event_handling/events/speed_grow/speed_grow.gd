@@ -7,6 +7,6 @@ func trigger_event(event):
 	var current_plot = get_parent().get_parent()
 	
 	var new_plot = plot.instance()
-	new_plot.global_position = current_plot.global_position
+	new_plot.position = current_plot.position
 	current_plot.get_parent().add_child(new_plot)
 	current_plot.queue_free()

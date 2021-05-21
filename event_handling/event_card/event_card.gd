@@ -23,7 +23,7 @@ func _on_Card_mouse_entered():
 		start_position = rect_position
 	
 	tween.interpolate_property(self, "rect_position",
-		rect_position, rect_position + Vector2(0, -18), 0.1,
+		rect_position, rect_position + Vector2(0, -9), 0.1,
 		Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	tween.start()
 	
@@ -35,7 +35,7 @@ func _on_Card_mouse_entered():
 	
 	yield(tween, "tween_completed")
 	tween.interpolate_property(self, "rect_position",
-	rect_position, rect_position + Vector2(0, -9), 0.1,
+	rect_position, rect_position + Vector2(0, -4.5), 0.1,
 	Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	tween.start()
 

@@ -8,8 +8,8 @@
 [ext_resource path="res://assets/plants/grunth/grunth_grown.png" type="Texture" id=6]
 [ext_resource path="res://goal_controller/goal_controller.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/music/para_beat_01.wav" type="AudioStream" id=8]
-[ext_resource path="res://levels/level.gd" type="Script" id=9]
-[ext_resource path="res://levels/level_3.tscn" type="PackedScene" id=10]
+[ext_resource path="res://expansions/level.gd" type="Script" id=9]
+[ext_resource path="res://expansions/level_3.tscn" type="PackedScene" id=10]
 
 
 [node name="Level2" type="Node2D"]

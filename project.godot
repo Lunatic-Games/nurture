@@ -33,12 +33,14 @@ _global_script_class_icons={
 [application]
 
 config/name="Nurture"
-run/main_scene="res://levels/level_1.tscn"
+run/main_scene="res://expansions/default.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
 Util="*res://assets/utility_script/util.gd"
+AutoVars="*res://assets/utility_script/auto_vars.gd"
+DevKeys="*res://assets/utility_script/dev_keys.gd"
 
 [display]
 
@@ -112,6 +114,11 @@ pause={
 dev_pass_day={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":80,"unicode":0,"echo":false,"script":null)
+ ]
+}
+dev_gain_coins={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777244,"unicode":0,"echo":false,"script":null)
  ]
 }
 

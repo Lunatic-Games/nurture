@@ -109,15 +109,8 @@ func plant_aged():
 	idle_anim.stop(true)
 	is_plant_grown = true
 	plant_downtimer.start(current_plant.downtime)
-	get_tree().call_group("goal_controller", "check_for_goal", current_plant)
 	display_plant()
 	enable_tooltip()
-	
-	# get the multiplier and calculate score
-	var multiplier = 1
-	if (times_nurtured >= current_plant.nurture_threshold):
-		multiplier = current_plant.nurture_multiplier
-	get_tree().call_group("goal_controller", "increase_score", current_plant.score, multiplier)
 	
 	# Check for seed drops
 	drop_seeds()
@@ -233,8 +226,7 @@ func nurture_plant():
 
 
 func gain_coins():
-	# Caught by the money manager
-	emit_signal("gain_coins", current_plant.gold_dropped + money_bonus)
+	get_tree().call_group("money_manager", "gain_coins", current_plant.gold_dropped + money_bonus)
 
 
 func empty_plot():

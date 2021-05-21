@@ -81,6 +81,7 @@ tracks/0/keys = {
 "plot",
 ]]
 script = ExtResource( 3 )
+GROWTH_LENGTH = 5.0
 
 [node name="LoveParticle" parent="." instance=ExtResource( 1 )]
 

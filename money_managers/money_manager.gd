@@ -1,7 +1,5 @@
 extends Control
 
-onready var current_coins = 0
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -12,6 +10,10 @@ func _ready():
 
 
 func gain_coins(coins):
-	print("gaining coins")
-	current_coins += coins
-	$Coins.bbcode_text = "[shake]" + str(current_coins) + "[/shake]"
+	AutoVars.current_coins += coins
+	$Coins.bbcode_text = "[shake]" + str(AutoVars.current_coins) + "[/shake]"
+
+
+func lose_coins(coins):
+	AutoVars.current_coins -= coins
+	$Coins.bbcode_text = "[shake]" + str(AutoVars.current_coins) + "[/shake]"

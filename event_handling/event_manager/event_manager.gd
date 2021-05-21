@@ -69,27 +69,34 @@ func pull_events(number):
 	
 	var events = []
 	
-	for index in number:
-		print("Index: ", index)
-		print("Common: ", free_common_events)
-		rng.randomize()
-		var chance = rng.randf()
-		var selected = false
+	# If the events are all meant to be shown, just get them in order
+	if (free_common_events.size() == number && common_chance >= 1):
+		for event in free_common_events:
+			events.push_back(event)
 		
-		# Check common event
-		if (!selected && chance <= common_chance):
-			var random_int = rng.randi()
-			events.push_back(free_common_events[random_int % free_common_events.size()])
-			free_common_events.remove(random_int  % free_common_events.size())
-			selected = true
+	else:
+		# Get the events in a random order
+		for index in number:
+			print("Index: ", index)
+			print("Common: ", free_common_events)
+			rng.randomize()
+			var chance = rng.randf()
+			var selected = false
 			
-		# Check uncommon event
-		chance -= common_chance
-		if (!selected && chance <= uncommon_chance):
-			var random_int = rng.randi()
-			events.push_back(free_uncommon_events[random_int % free_uncommon_events.size()])
-			free_uncommon_events.remove(random_int  % free_uncommon_events.size())
-			selected = true
+			# Check common event
+			if (!selected && chance <= common_chance):
+				var random_int = rng.randi()
+				events.push_back(free_common_events[random_int % free_common_events.size()])
+				free_common_events.remove(random_int  % free_common_events.size())
+				selected = true
+				
+			# Check uncommon event
+			chance -= common_chance
+			if (!selected && chance <= uncommon_chance):
+				var random_int = rng.randi()
+				events.push_back(free_uncommon_events[random_int % free_uncommon_events.size()])
+				free_uncommon_events.remove(random_int  % free_uncommon_events.size())
+				selected = true
 	
 	return events
 
@@ -127,6 +134,7 @@ func generate_card(data):
 	var card = card_template.instance()
 	card.get_node("Title").text = data.display_name
 	card.get_node("Description").text = data.display_description
+	card.get_node("Sprite").texture = data.display_image
 	card.data = data
 	card_display.add_child(card)
 	

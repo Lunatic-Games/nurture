@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/fonts/Yagitudeh.otf" type="DynamicFontData" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://assets/events/money_grow.png" type="Texture" id=2]
 [ext_resource path="res://event_handling/event_card/event_card.gd" type="Script" id=3]
 
 [sub_resource type="StyleBoxFlat" id=1]
@@ -27,7 +27,6 @@ __meta__ = {
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 96, 192 )
-scale = Vector2( 3, 6 )
 texture = ExtResource( 2 )
 
 [node name="Title" type="Label" parent="."]
@@ -40,6 +39,7 @@ custom_fonts/font = SubResource( 2 )
 text = "Test"
 align = 1
 valign = 1
+autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -53,6 +53,7 @@ custom_styles/normal = SubResource( 1 )
 custom_fonts/font = SubResource( 3 )
 text = "Lorem Ipsum"
 align = 1
+autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }

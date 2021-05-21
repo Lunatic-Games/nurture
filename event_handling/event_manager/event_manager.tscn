@@ -12,13 +12,14 @@ common_events = [ ExtResource( 2 ), ExtResource( 3 ) ]
 common_chance = 1.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 4
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 visible = false
 margin_right = 1024.0
 margin_bottom = 600.0
 rect_min_size = Vector2( 1024, 600 )
-color = Color( 0.141176, 0.0156863, 0.0156863, 0.572549 )
+color = Color( 0.160784, 0.152941, 0.164706, 0.545098 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
