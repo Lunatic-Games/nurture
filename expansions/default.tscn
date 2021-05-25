@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://assets/plants/cablit/cablit_grown.png" type="Texture" id=1]
 [ext_resource path="res://assets/plants/ice_melon/ice_melon_grown.png" type="Texture" id=2]
@@ -15,13 +15,10 @@
 [ext_resource path="res://money_managers/money_manager.tscn" type="PackedScene" id=13]
 [ext_resource path="res://walls/purchasable_wall.tscn" type="PackedScene" id=14]
 [ext_resource path="res://special_overlays/cloud_v1.tscn" type="PackedScene" id=15]
-[ext_resource path="res://deities/deity_flag.tscn" type="PackedScene" id=16]
 [ext_resource path="res://clickable_items/filler/rocks/rock_1.tscn" type="PackedScene" id=17]
 [ext_resource path="res://special_overlays/cloud_v2.tscn" type="PackedScene" id=18]
 [ext_resource path="res://clickable_items/produce_box/produce_box.tscn" type="PackedScene" id=19]
-[ext_resource path="res://deities/deity_home.tscn" type="PackedScene" id=20]
 [ext_resource path="res://walls/invisible_wall.tscn" type="PackedScene" id=21]
-[ext_resource path="res://deities/meadows/stag.tscn" type="PackedScene" id=22]
 [ext_resource path="res://event_handling/events/herb/herb.tres" type="Resource" id=23]
 
 [sub_resource type="Environment" id=1]
@@ -89,22 +86,11 @@ position = Vector2( 288, -32 )
 
 [node name="MoneyManager" parent="Level1" instance=ExtResource( 13 )]
 
-[node name="Stag" parent="Level1" instance=ExtResource( 22 )]
-position = Vector2( -919.258, 118.921 )
-
-[node name="DeityFlag" parent="Level1" instance=ExtResource( 16 )]
-visible = false
-position = Vector2( -451, 97 )
-
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="Level1"]
 pause_mode = 2
 stream = ExtResource( 3 )
 autoplay = true
 bus = "Music"
-
-[node name="DeityHome" parent="Level1" instance=ExtResource( 20 )]
-visible = false
-position = Vector2( -919.631, 121.194 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Level1"]
 environment = SubResource( 1 )

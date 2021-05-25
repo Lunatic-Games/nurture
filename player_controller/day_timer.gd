@@ -4,7 +4,7 @@ export (Color) var day_color = Color("#d9e74b") # bright yellow
 export (Color) var night_color = Color("#400c39") # deep purple
 export (Curve) var color_ratio
 
-var DAY_LENGTH = 15
+var DAY_LENGTH = 100
 
 onready var color_rect = get_node("DayOverlay")
 

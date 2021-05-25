@@ -223,6 +223,7 @@ func harvest_plant():
 
 func nurture_plant():
 	times_nurtured += 1
+	water_emitter.emitting = false
 
 
 func gain_coins():

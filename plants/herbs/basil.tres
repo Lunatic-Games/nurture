@@ -1,0 +1,30 @@
+[gd_resource type="Resource" load_steps=5 format=2]
+
+[ext_resource path="res://plants/PLANT.gd" type="Script" id=1]
+[ext_resource path="res://assets/plants/herbs/basil_grown.png" type="Texture" id=2]
+[ext_resource path="res://assets/plants/herbs/basil_seed.png" type="Texture" id=3]
+[ext_resource path="res://plants/herbs/sage.tres" type="Resource" id=4]
+
+[resource]
+script = ExtResource( 1 )
+plant_name = "Basil"
+plant_sprite = ExtResource( 2 )
+seed_sprite = ExtResource( 3 )
+plant_type = "herb"
+other_drops = [ ExtResource( 4 ) ]
+rare_drops = [  ]
+others_drop_chance = 1.0
+max_others_dropped = 0
+drops_seed = false
+max_own_seeds_dropped = 1
+min_own_seeds_dropped = 1
+seed_drop_chance = 0.0
+growing_time = 2
+clicks_to_harvest = 1
+downtime = 14.0
+gold_dropped = 2
+essence_dropped = 0
+nurture_threshold = 0
+nurture_multiplier = 1.0
+rare_seeds_dropped_if_nurtured = 0
+rare_seed_drop_chance = 0.0

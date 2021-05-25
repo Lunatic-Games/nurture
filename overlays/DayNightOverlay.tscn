@@ -8,7 +8,9 @@ _data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.1, 1 ), 0.0, 0.0, 0, 0, Ve
 [node name="DayNightOverlay" type="CanvasLayer"]
 layer = 2
 
-[node name="DayTimer" type="Timer" parent="."]
+[node name="DayTimer" type="Timer" parent="." groups=[
+"day_timer",
+]]
 wait_time = 100.0
 autostart = true
 script = ExtResource( 1 )

@@ -77,7 +77,6 @@ tracks/0/keys = {
 }
 
 [node name="BasicPlot" type="Node2D" groups=[
-"money_maker",
 "new_day",
 "plot",
 ]]
@@ -95,8 +94,9 @@ texture = ExtResource( 7 )
 
 [node name="WaterParticle" parent="." instance=ExtResource( 1 )]
 modulate = Color( 1, 1, 1, 1 )
-amount = 5
+amount = 3
 lifetime = 0.6
+one_shot = false
 texture = ExtResource( 8 )
 
 [node name="HoverText" parent="." instance=ExtResource( 2 )]

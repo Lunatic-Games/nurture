@@ -1,9 +1,10 @@
-[gd_resource type="Resource" load_steps=5 format=2]
+[gd_resource type="Resource" load_steps=6 format=2]
 
 [ext_resource path="res://plants/PLANT.gd" type="Script" id=1]
 [ext_resource path="res://assets/plants/herbs/rosemary_grown.png" type="Texture" id=2]
 [ext_resource path="res://assets/plants/herbs/rosemary_seed.png" type="Texture" id=3]
-[ext_resource path="res://plants/herbs/garlic.tres" type="Resource" id=4]
+[ext_resource path="res://plants/herbs/thyme.tres" type="Resource" id=4]
+[ext_resource path="res://plants/herbs/basil.tres" type="Resource" id=5]
 
 [resource]
 script = ExtResource( 1 )
@@ -11,7 +12,7 @@ plant_name = "rosemary"
 plant_sprite = ExtResource( 2 )
 seed_sprite = ExtResource( 3 )
 plant_type = "herb"
-other_drops = [ ExtResource( 4 ) ]
+other_drops = [ ExtResource( 5 ), ExtResource( 4 ) ]
 rare_drops = [  ]
 others_drop_chance = 0.75
 max_others_dropped = 1
